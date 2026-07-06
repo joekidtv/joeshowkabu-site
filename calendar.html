@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>レクチャーアーカイブ | Joe Show Kabu — その一歩が、将来の複利になる。〜高校生のための金融知識〜</title>
-<meta name="description" content="株式・投資・お金の仕組みを体系立てて学べるJoe Show Kabuの全レクチャー一覧。">
+<title>経済カレンダー | Joe Show Kabu — その一歩が、将来の複利になる。〜高校生のための金融知識〜</title>
+<meta name="description" content="日銀金融政策決定会合・FOMC・米CPI・米雇用統計など、2026年の重要経済イベントをまとめたJoe Show Kabuの経済カレンダー。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zilla+Slab:wght@700;900&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
       <nav>
         <ul>
           <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-          <li><a href="lectures.html" class="active" data-i18n="nav.lectures">レクチャー</a></li>
+          <li><a href="lectures.html" data-i18n="nav.lectures">レクチャー</a></li>
           <li><a href="index.html#news" data-i18n="nav.news">NEWS</a></li>
-          <li><a href="calendar.html" data-i18n="nav.calendar">経済カレンダー</a></li>
+          <li><a href="calendar.html" class="active" data-i18n="nav.calendar">経済カレンダー</a></li>
           <li><a href="about.html" data-i18n="nav.about">About</a></li>
           <li><a href="index.html#contact" data-i18n="nav.contact">お問い合わせ</a></li>
         </ul>
@@ -35,14 +35,26 @@
 
   <div class="container">
     <div class="page-head">
-      <h1 data-i18n="lecturesPage.pageTitle">レクチャーアーカイブ</h1>
-      <p data-i18n="lecturesPage.pageLead">株式・投資・お金の仕組みを、体系立てて学べる全レクチャー一覧です。新しい回はInstagram投稿と同時にここへ追加されます。</p>
+      <h1 data-i18n="calendarPage.pageTitle">経済カレンダー</h1>
+      <p data-i18n="calendarPage.pageLead">日銀金融政策決定会合・FOMC・米CPI・米雇用統計など、マーケットを動かす2026年の重要経済イベントをまとめました。日付をクリックすると、その日のイベントの詳細が表示されます。</p>
     </div>
 
-    <div class="filters" id="filters"></div>
-
     <section>
-      <div class="lecture-grid" id="archive-grid"><div class="state-msg">読み込み中…</div></div>
+      <div class="cal-board">
+        <div class="cal-nav">
+          <button type="button" id="cal-prev" class="cal-nav-btn" aria-label="前の月">←</button>
+          <span class="cal-month-label" id="cal-month-label"></span>
+          <button type="button" id="cal-next" class="cal-nav-btn" aria-label="次の月">→</button>
+        </div>
+        <div class="cal-legend" id="cal-legend"></div>
+        <div class="cal-grid" id="cal-grid"><div class="state-msg">読み込み中…</div></div>
+      </div>
+
+      <div class="cal-detail" id="cal-detail">
+        <p class="cal-noevents" data-i18n="calendarPage.hint">カレンダーの日付をクリックすると、その日の経済イベントが表示されます。</p>
+      </div>
+
+      <p class="cal-sources" id="cal-sources"></p>
     </section>
   </div>
 
@@ -69,8 +81,9 @@
 </div>
 <script src="assets/i18n.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/calendar.js"></script>
 <script>
-  renderArchive('archive-grid', 'filters');
+  initEconomicCalendar();
 </script>
 </body>
 </html>

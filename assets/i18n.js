@@ -10,6 +10,7 @@ const translations = {
     'nav.home': 'ホーム',
     'nav.lectures': 'レクチャー',
     'nav.news': 'ニュース',
+    'nav.calendar': '経済カレンダー',
     'nav.about': 'Joe Show Kabuについて',
     'nav.contact': 'お問い合わせ',
     'nav.insta': 'Instagramで見る',
@@ -59,6 +60,10 @@ const translations = {
     'lecturesPage.pageTitle': 'レクチャーアーカイブ',
     'lecturesPage.pageLead': '株式・投資・お金の仕組みを、体系立てて学べる全レクチャー一覧です。新しい回はInstagram投稿と同時にここへ追加されます。',
 
+    'calendarPage.pageTitle': '経済カレンダー',
+    'calendarPage.pageLead': '日銀金融政策決定会合・FOMC・米CPI・米雇用統計など、マーケットを動かす2026年の重要経済イベントをまとめました。日付をクリックすると、その日のイベントの詳細が表示されます。',
+    'calendarPage.hint': 'カレンダーの日付をクリックすると、その日の経済イベントが表示されます。',
+
     'disclaimerPage.pageTitle': '免責事項',
     'disclaimerPage.pageLead': 'Joe Show Kabu(以下「当アカウント」)をご利用いただく前に、以下の内容をご確認ください。',
     'disclaimerPage.h2.purpose': '情報の目的',
@@ -76,6 +81,7 @@ const translations = {
     'nav.home': 'Home',
     'nav.lectures': 'Lectures',
     'nav.news': 'News',
+    'nav.calendar': 'Economic Calendar',
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.insta': 'Follow on Instagram',
@@ -124,6 +130,10 @@ const translations = {
 
     'lecturesPage.pageTitle': 'Lecture Archive',
     'lecturesPage.pageLead': 'A full, systematically organized list of lectures for learning stocks, investing, and how money works. New episodes are added here as soon as they go live on Instagram.',
+
+    'calendarPage.pageTitle': 'Economic Calendar',
+    'calendarPage.pageLead': 'Key 2026 market-moving events — BOJ policy meetings, FOMC, US CPI, and the US jobs report — all in one place. Click a date to see the details of that day\'s events.',
+    'calendarPage.hint': 'Click a date on the calendar to see that day\'s economic events.',
 
     'disclaimerPage.pageTitle': 'Disclaimer',
     'disclaimerPage.pageLead': 'Please review the following before using Joe Show Kabu (referred to below as "this account").',

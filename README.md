@@ -4,16 +4,24 @@
 ```
 index.html         トップページ
 lectures.html      レクチャーアーカイブ
+calendar.html      経済カレンダーページ
 about.html         Aboutページ
 disclaimer.html    免責事項ページ
 lectures.json      ← レクチャーのデータ(ここを編集)
 news.json          ← NEWSのデータ(ここを編集)
-market.json        ← 本日の主要指数のデータ(ここを編集)
+market.json        ← 本日の主要指数のデータ(日経平均・ドル円は自動更新)
+calendar.json      ← 経済カレンダーのイベントデータ(ここを編集)
 assets/
   logo.png         公式ロゴ
   style.css        全ページ共通デザイン
   app.js           データ読み込み・描画
+  calendar.js      経済カレンダーの描画
+  i18n.js          JP/EN言語切り替え
   thumbs/          サムネイル画像を入れる場所
+scripts/
+  update_market.py 市場データの自動更新スクリプト(GitHub Actionsが実行)
+.github/workflows/
+  update-market.yml 市場データを毎日自動更新するワークフロー
 ```
 
 ## 公開方法(どちらか)
@@ -91,6 +99,32 @@ assets/
 - `sourceLabel` / `sourceUrl`: 出典リンクのラベルとURL
 
 ※出典: 日経平均・米ドル/円の自動取得は [Yahoo Finance](https://finance.yahoo.com/)、米ドル/円のブラウザ側ライブ更新は [Frankfurter(ECB基準レート)](https://www.frankfurter.dev/) を利用しています。
+
+## 経済カレンダーを更新するには
+`calendar.html` が経済カレンダーページ、データは `calendar.json` です。
+2026年の「日銀金融政策決定会合(全8回)」「FOMC(全8回)」「米CPI(全12回)」「米雇用統計(全12回)」は、
+各機関の公式発表スケジュールを元に登録済みです(出典はページ下部と `calendar.json` の `sources` に明記)。
+
+**新しいイベント(例: 日米首脳会談)を追加するには**、`calendar.json` の `events` 配列に1件追記するだけです:
+
+```json
+{
+  "date": "2026-08-15",
+  "category": "other",
+  "title": "日米首脳会談",
+  "desc": "ワシントンで開催予定。通商・為替が議題になる可能性。"
+}
+```
+
+- `date`: `YYYY-MM-DD` 形式
+- `category`: `"jp"`(日本・赤) / `"us"`(米国・緑) / `"other"`(その他・国際・黒)。カレンダーの丸い点の色分けに使われます
+- `title`: イベント名(詳細パネルに表示)
+- `desc`: 補足説明(省略可)
+
+**運用上の注意**:
+- このカレンダーは自動では更新されません。日程変更(政府機関閉鎖による延期など)や新規イベントは、出典元(下記)を確認のうえ手動で `calendar.json` に反映してください
+- 外部サイトの情報を使う場合は、`sources` 配列に出典(ラベルとURL)を必ず追加してください。ページ下部に自動で出典一覧として表示されます
+- 登録済みイベントの出典: [日本銀行(2026年会合日程PDF)](https://www.boj.or.jp/mopo/mpmsche_minu/m_ref/mref250731a.pdf) / [FRB(FOMCカレンダー)](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm) / [BLS(CPI)](https://www.bls.gov/schedule/news_release/cpi.htm) / [BLS(雇用統計)](https://www.bls.gov/schedule/news_release/empsit.htm)
 
 ## 現在の状態・差し替え推奨
 - 第1〜8回の `instagram_url` は実際の投稿URLを設定済み。第9回は近日公開のため空欄

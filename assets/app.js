@@ -168,7 +168,7 @@ async function liveUsdJpy(items){
       target.value = jpy.toFixed(2);
       target.change = '';         // 前日比は日次JSON側に任せ、ライブ値では表示しない
       target.changePercent = '';
-      target.updated = `${d.date}(ECB基準レート）`;
+      target.updated = `${d.date} (ECB基準レート)`;
       target.sourceLabel = 'Frankfurter / ECB';
       target.sourceUrl = 'https://www.frankfurter.dev/';
     }
