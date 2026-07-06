@@ -27,9 +27,19 @@ scripts/
   update-market-us.yml 米国市場データを毎日自動更新するワークフロー
 ```
 
-## 公開方法(どちらか)
-- **Netlify**: このフォルダごとドラッグ&ドロップするだけで公開
-- **GitHub Pages**: このフォルダをリポジトリにpushし、Pagesを有効化
+## 公開方法(GitHub Pages・推奨)
+Netlifyの無料枠(ビルド時間)を使い切ったため、現在は **GitHub Pages** で公開しています。
+リポジトリの Settings → Pages → Source を `Deploy from a branch`、Branch を `main` / `/ (root)` に設定するだけで、
+`main` にpushするたびに自動で再公開されます。ビルド時間の制限が無く、市場データの自動更新(1日3回のコミット)を
+気にせず使えます。
+
+公開URL: `https://<GitHubユーザー名>.github.io/joeshowkabu-site-/`(実際のURLはPages有効化後に確認してください)
+
+### Netlifyを使う場合(代替・課金注意)
+このフォルダごとドラッグ&ドロップするだけで公開できますが、無料枠には月間のビルド時間上限があります。
+GitHub Actionsによる1日3回の自動コミット(市場データ更新)が積み重なるとすぐに上限に達するため、
+Netlifyを使う場合は Site configuration → Build & deploy で「Stop builds」にするか、
+自動更新ワークフロー(`.github/workflows/`)の頻度を減らすことを検討してください。
 
 ※ローカルのブラウザでindex.htmlを直接開くと、JSON読み込み(fetch)がブラウザの制限でブロックされる場合があります。正しく確認するには、上記のように公開するか、簡易サーバー(`python3 -m http.server`)を使ってください。
 
