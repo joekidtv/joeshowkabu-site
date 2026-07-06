@@ -1,0 +1,92 @@
+[
+  {
+    "id": "lecture-01",
+    "number": "01",
+    "title": "株ってそもそも何?",
+    "category": ["基礎"],
+    "summary": "株式の仕組みと株主の権利をゼロから解説するシリーズ第1回。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DZu_LEDCXrd/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-02",
+    "number": "02",
+    "title": "金利のきほん",
+    "category": ["金利"],
+    "summary": "金利が上がる・下がると、お金や株価にどう影響するのかを整理。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DZxSg3FiSqU/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-03",
+    "number": "03",
+    "title": "新NISA完全ガイド",
+    "category": ["NISA"],
+    "summary": "非課税で投資できる新NISA制度の仕組みと使い方を総整理。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DZzPLy2EUmZ/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-04",
+    "number": "04",
+    "title": "複利のしくみ",
+    "category": ["複利"],
+    "summary": "雪だるま式に資産が増える「複利」の力を体感する回。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DZzfZVgEauu/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-05",
+    "number": "05",
+    "title": "NISA×複利シミュレーション",
+    "category": ["NISA", "複利"],
+    "summary": "新NISAと複利を組み合わせると資産がどう伸びるかをシミュレーション。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DZ2E3ZVES-t/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-06",
+    "number": "06",
+    "title": "複利×新NISA 最強投資運用術",
+    "category": ["複利", "NISA"],
+    "summary": "「時間」という高校生最大の武器を使った、積立投資の絶対方程式。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DZ5EteiCY9s/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-07",
+    "number": "07",
+    "title": "インデックス投資(S&P500と全世界株式)",
+    "category": ["インデックス投資"],
+    "summary": "S&P500と全世界株式、それぞれの特徴をフェアに比較する回。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DaCZNulkRKc/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-08",
+    "number": "08",
+    "title": "個別株の基本(前編)",
+    "category": ["個別株"],
+    "summary": "個別株のリスクとリターンを、NVIDIA・キオクシア等の実例から学ぶ。",
+    "thumbnail": "",
+    "instagram_url": "https://www.instagram.com/p/DaXRVArkWjE/",
+    "status": "published"
+  },
+  {
+    "id": "lecture-09",
+    "number": "09",
+    "title": "2つの指標(ファンダメンタルズ分析とテクニカル分析)",
+    "category": ["分析"],
+    "summary": "黄金クロソ・デッドクロス、待望のマスコット本格デビュー回。",
+    "thumbnail": "",
+    "instagram_url": "",
+    "status": "upcoming"
+  }
+]
