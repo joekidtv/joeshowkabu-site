@@ -10,6 +10,7 @@ disclaimer.html    免責事項ページ
 lectures.json      ← レクチャーのデータ(ここを編集)
 news.json          ← NEWSのデータ(ここを編集)
 market.json        ← 本日の主要指数のデータ(TOPIX・国債金利。毎日手動で更新)
+market_us.json     ← 本日の米国市場のデータ(NYダウ・S&P500・NASDAQ・米10年金利。自動更新)
 calendar.json      ← 経済カレンダーのイベントデータ(ここを編集)
 assets/
   logo.png         公式ロゴ
@@ -18,6 +19,10 @@ assets/
   calendar.js      経済カレンダーの描画
   i18n.js          JP/EN言語切り替え
   thumbs/          サムネイル画像を入れる場所
+scripts/
+  update_market_us.py 米国市場データの自動更新スクリプト(GitHub Actionsが実行)
+.github/workflows/
+  update-market-us.yml 米国市場データを毎日自動更新するワークフロー
 ```
 
 ## 公開方法(どちらか)
@@ -97,6 +102,17 @@ assets/
 - `sourceLabel` / `sourceUrl`: 出典リンクのラベルとURL。TOPIXは必ずJPXの上記ページを設定する
 
 日本10年国債金利は、JPXが直接発表する指標ではないため上記の「東証限定」ルールの対象外です。出典は引き続き日本経済新聞のマーケットページとしています。同様の厳格運用(15:30終値限定)を適用するかどうかは、必要であれば別途ご相談ください。
+
+## 本日の米国市場(自動更新)
+「本日の主要指数」ボックスの下に、NYダウ・S&P500・NASDAQ・米国10年債券利回りをまとめた2つ目のカルーセルがあります。データは `market_us.json`。グラフィック・挙動(1枚1指標、3秒ごとスライド)は上のボックスと共通です。
+
+- **GitHub Actions(`.github/workflows/update-market-us.yml`)** が毎日 07:00 JST(米国市場の月〜金の取引終了後)に `scripts/update_market_us.py` を実行し、[Yahoo Finance](https://finance.yahoo.com/) から終値を取得して `market_us.json` を自動コミットします
+- **サマータイム(EDT)と標準時間(EST)のずれへの対応**: 米国市場の終値確定時刻は季節で1時間変わる(EDT期間は05:00 JST、EST期間は06:00 JST)ため、07:00 JSTという「どちらの場合でも必ず既に閉まっている」時刻に実行しています。さらにスクリプト自身がYahoo Financeの返す取引時間情報(`currentTradingPeriod`)を見て、実際に取引が終了しているかを二重チェックし、万一取引時間中であればその日の更新をスキップします(祝日で市場が休みの日も安全に動作します)
+
+> **注意**: このワークフローも、JP側と同様にリポジトリの Settings → Actions → General で「Workflow permissions」を **Read and write permissions** にしていないと動作しません(JP側で設定済みであれば、この米国側にも同じ設定が有効です)。Actionsタブの "Update US market data" から手動実行(Run workflow)して動作確認できます。
+
+### `market_us.json` の各フィールド
+`market.json` と同じ構造です。`name` は自動更新の対象キーなので変更しないでください(`NYダウ(NY Dow Jones)` / `S&P500` / `NASDAQ` / `米国10年債券利回り`)。
 
 ## 経済カレンダーを更新するには
 `calendar.html` が経済カレンダーページ、データは `calendar.json` です。

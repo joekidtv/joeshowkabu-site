@@ -74,6 +74,18 @@
         </div>
       </div>
 
+      <div class="market-board">
+        <div class="market-board-head">
+          <span class="market-board-title" data-i18n="market.titleUs">本日の米国市場</span>
+        </div>
+        <div class="market-carousel" id="market-us-carousel">
+          <div class="market-track" id="market-us-track">
+            <div class="market-slide"><div class="state-msg">読み込み中…</div></div>
+          </div>
+          <div class="market-dots" id="market-us-dots"></div>
+        </div>
+      </div>
+
       <div class="news-strip" id="news-strip"><div class="state-msg">読み込み中…</div></div>
     </section>
 
@@ -124,7 +136,8 @@
 <script src="assets/i18n.js"></script>
 <script src="assets/app.js"></script>
 <script>
-  renderMarketIndices('market-track', 'market-dots');
+  renderMarketIndices('market-track', 'market-dots', 'market.json');
+  renderMarketIndices('market-us-track', 'market-us-dots', 'market_us.json');
   renderNews('news-strip');
   renderHomeLectures('home-lectures');
 </script>

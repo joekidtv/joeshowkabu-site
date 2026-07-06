@@ -153,10 +153,10 @@ function startMarketCarousel(trackId, dotsId, intervalMs){
   }
 }
 
-async function renderMarketIndices(trackId, dotsId){
+async function renderMarketIndices(trackId, dotsId, jsonPath){
   const track = document.getElementById(trackId);
   if(!track) return;
-  const data = await fetchJSON('market.json');
+  const data = await fetchJSON(jsonPath || 'market.json');
   if(!data || !data.length){ track.innerHTML = '<div class="market-slide"><div class="state-msg">市場データを読み込めませんでした。</div></div>'; return; }
   track.innerHTML = data.map(marketSlide).join('');
   startMarketCarousel(trackId, dotsId, 3000);

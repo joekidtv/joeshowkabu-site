@@ -25,6 +25,7 @@ const translations = {
 
     'news.sectionTitle': 'Joe Show NEWS 最新マーケット情報',
     'market.title': '本日の主要指数',
+    'market.titleUs': '本日の米国市場',
 
     'lectures.sectionTitle': '最新レクチャー',
     'lectures.seeAll': '全レクチャーを見る',
@@ -96,6 +97,7 @@ const translations = {
 
     'news.sectionTitle': 'Joe Show NEWS — Latest Market Updates',
     'market.title': "Today's Key Market Indices",
+    'market.titleUs': "Today's US Market",
 
     'lectures.sectionTitle': 'Latest Lectures',
     'lectures.seeAll': 'View All Lectures',

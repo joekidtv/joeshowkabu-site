@@ -1,0 +1,46 @@
+name: Update US market data
+
+# 米国主要指数(NYダウ・S&P500・NASDAQ・米10年債券利回り)を、米国市場が閉まった後の
+# 時間帯に毎日自動取得し、market_us.json を更新します。コミットが入るとNetlifyが再デプロイします。
+#
+# 米国市場はサマータイム(EDT, UTC-4)と標準時間(EST, UTC-5)で終値の確定時刻が
+# 1時間ずれるため、07:00 JST(22:00 UTC)という「どちらの時間帯でも必ず既に
+# 市場が閉まっている」時刻に実行する。実際に閉まっているかは
+# scripts/update_market_us.py 側で Yahoo Finance が返す取引時間情報を見て
+# 二重に確認し、閉まっていなければ更新をスキップする(誤って取引時間中の
+# 値を終値として取り込まないためのフェイルセーフ)。
+
+on:
+  schedule:
+    - cron: "0 22 * * 1-5"  # 07:00 JST(米国の月〜金の取引終了後、翌日分)
+  workflow_dispatch: {}      # 手動実行も可能
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update market_us.json
+        run: python3 scripts/update_market_us.py
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain market_us.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add market_us.json
+            git commit -m "chore: auto-update US market data [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
