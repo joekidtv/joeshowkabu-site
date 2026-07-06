@@ -32,6 +32,38 @@ nav ul a.active{color:var(--red);}
 }
 .btn-insta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--black);}
 
+/* menu toggle (常時表示・ヘッダーが隠れていても操作可能) */
+.menu-toggle{
+  position:fixed;top:20px;right:20px;z-index:30;
+  width:48px;height:48px;border:2px solid var(--black);border-radius:var(--r-sm);
+  background:var(--white);box-shadow:4px 4px 0 var(--black);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  transition:transform .1s, box-shadow .1s;
+}
+.menu-toggle:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--black);}
+.menu-toggle span{width:22px;height:2px;background:var(--black);display:block;}
+
+.menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:40;display:none;}
+.menu-backdrop.open{display:block;}
+.menu-drawer{
+  position:fixed;top:0;right:0;height:100%;width:min(300px,80vw);
+  background:var(--white);border-left:3px solid var(--black);z-index:41;
+  padding:80px 28px 28px;box-sizing:border-box;
+  transform:translateX(100%);transition:transform .25s ease;
+  display:flex;flex-direction:column;gap:28px;overflow-y:auto;
+}
+.menu-drawer.open{transform:translateX(0);}
+.menu-drawer-close{
+  position:absolute;top:20px;right:20px;width:40px;height:40px;
+  border:2px solid var(--black);border-radius:999px;background:var(--white);
+  font-weight:900;font-size:18px;cursor:pointer;box-shadow:3px 3px 0 var(--black);
+}
+.menu-drawer nav ul{list-style:none;display:flex;flex-direction:column;gap:20px;margin:0;padding:0;font-weight:900;font-size:18px;}
+.menu-drawer nav ul a:hover{color:var(--red);}
+.menu-drawer nav ul a.active{color:var(--red);}
+.menu-drawer .lang-toggle{align-self:flex-start;}
+.menu-drawer .btn-insta{align-self:flex-start;}
+
 /* instagram QR code (常時表示・枠なし) */
 .qr-inline{display:inline-flex;align-items:center;justify-content:center;}
 .qr-inline img{width:88px;height:88px;object-fit:contain;display:block;}

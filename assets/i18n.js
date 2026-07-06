@@ -174,27 +174,19 @@ function initLangToggle(){
   });
 }
 
-// 折りたたみ式ヘッダー: 下スクロールで隠し、上スクロール or ページ最上部で再表示する(PC・スマホ共通)
+// 折りたたみ式ヘッダー: 少しでも下にスクロールしたら隠し、ページ最上部に戻るまで再表示しない(PC・スマホ共通)
 function initHeaderCollapse(){
   const header = document.querySelector('header');
   if(!header) return;
-  let lastY = window.scrollY;
   let ticking = false;
-  const hideAfter = 80;   // これ以下(ページ上部付近)では常に表示する
-  const threshold = 8;    // これ未満の揺れ(トラックパッド等の微小スクロール)は無視する
+  const hideAfter = 80;   // これ以下(ページ上部付近)でのみ表示する
 
   function update(){
     const y = window.scrollY;
-    const delta = y - lastY;
     if(y <= hideAfter){
       header.classList.remove('header-hidden');
-      lastY = y;
-    }else if(delta > threshold){
-      header.classList.add('header-hidden');    // 下スクロール → 隠す
-      lastY = y;
-    }else if(delta < -threshold){
-      header.classList.remove('header-hidden');  // 上スクロール → 表示
-      lastY = y;
+    }else{
+      header.classList.add('header-hidden');
     }
     ticking = false;
   }
@@ -207,5 +199,24 @@ function initHeaderCollapse(){
   }, {passive:true});
 }
 
+// スクロール中でも常に押せるハンバーガーメニュー(ヘッダーが隠れていてもナビにアクセスできる)
+function initMenuDrawer(){
+  const toggle = document.getElementById('menu-toggle');
+  const drawer = document.getElementById('menu-drawer');
+  const backdrop = document.getElementById('menu-backdrop');
+  const closeBtn = document.getElementById('menu-drawer-close');
+  if(!toggle || !drawer || !backdrop) return;
+
+  function open(){ drawer.classList.add('open'); backdrop.classList.add('open'); }
+  function close(){ drawer.classList.remove('open'); backdrop.classList.remove('open'); }
+
+  toggle.addEventListener('click', open);
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+}
+
 document.addEventListener('DOMContentLoaded', initLangToggle);
 document.addEventListener('DOMContentLoaded', initHeaderCollapse);
+document.addEventListener('DOMContentLoaded', initMenuDrawer);

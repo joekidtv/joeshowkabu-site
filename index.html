@@ -36,6 +36,29 @@
     </div>
   </header>
 
+  <button type="button" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="menu-backdrop" id="menu-backdrop"></div>
+  <div class="menu-drawer" id="menu-drawer">
+    <button type="button" id="menu-drawer-close" class="menu-drawer-close" aria-label="閉じる">×</button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+          <li><a href="lectures.html" data-i18n="nav.lectures">レクチャー</a></li>
+          <li><a href="#news" data-i18n="nav.news">NEWS</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">経済カレンダー</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    <div class="lang-toggle" role="group" aria-label="Language toggle">
+      <button type="button" data-lang="ja" class="active">JP</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta" data-i18n="nav.insta">Instagramで見る</a>
+  </div>
+
   <div class="container">
     <section class="hero">
       <div class="candles" aria-hidden="true">
