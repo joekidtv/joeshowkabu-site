@@ -63,14 +63,21 @@ section{padding:50px 0;}
 .market-board{border:2px solid var(--black);border-radius:var(--r-md);box-shadow:4px 4px 0 var(--black);background:var(--white);padding:20px 24px;margin-bottom:28px;}
 .market-board-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
 .market-board-title{font-weight:900;font-size:15px;}
-.market-updated{font-size:12px;font-weight:700;color:#555;}
-.market-table{width:100%;border-collapse:collapse;font-size:14px;}
-.market-table th{text-align:left;font-weight:900;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid var(--black);}
-.market-table td{padding:10px 6px;border-bottom:1px solid #ddd;font-weight:700;}
-.market-table tr:last-child td{border-bottom:none;}
-.market-table .m-name{font-weight:900;}
-.market-table .m-change.up{color:var(--red);}
-.market-table .m-change.down{color:var(--green);}
+
+/* market carousel: 1枚=1指標、3秒ごとに自動スライド */
+.market-carousel{overflow:hidden;}
+.market-track{display:flex;transition:transform .5s ease;}
+.market-slide{flex:0 0 100%;border:3px solid var(--black);border-radius:var(--r-lg);box-shadow:5px 5px 0 var(--black);background:var(--white);padding:28px 24px;text-align:center;}
+.market-slide .m-name{font-weight:900;font-size:16px;margin-bottom:10px;}
+.market-slide .m-value{font-family:'Zilla Slab',serif;font-weight:900;font-size:clamp(34px,7vw,52px);line-height:1.1;letter-spacing:-0.01em;}
+.market-slide .m-change{font-weight:900;font-size:18px;margin-top:10px;}
+.market-slide .m-change.up{color:var(--red);}
+.market-slide .m-change.down{color:var(--green);}
+.market-slide .m-meta{margin-top:16px;font-size:12px;font-weight:700;color:#777;}
+.market-slide .m-meta a{color:var(--red);text-decoration:underline;}
+.market-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+.market-dots button{width:10px;height:10px;padding:0;border:2px solid var(--black);border-radius:999px;background:var(--white);cursor:pointer;}
+.market-dots button.active{background:var(--black);}
 
 /* news strip */
 .news-strip{display:flex;gap:18px;overflow-x:auto;padding-bottom:10px;}

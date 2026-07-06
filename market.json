@@ -1,30 +1,38 @@
 [
   {
     "name": "日経平均株価",
-    "value": "39,850.25",
-    "change": "+180.42",
-    "changePercent": "+0.45%",
-    "updated": "2026-07-06 15:00"
+    "value": "69,744.07",
+    "change": "+1,010.92",
+    "changePercent": "+1.47%",
+    "updated": "2026-07-03 15:00 終値",
+    "sourceLabel": "日本経済新聞",
+    "sourceUrl": "https://www.nikkei.com/marketdata/quote/NK225/"
   },
   {
     "name": "TOPIX",
-    "value": "2,780.15",
-    "change": "+12.30",
-    "changePercent": "+0.44%",
-    "updated": "2026-07-06 15:00"
+    "value": "3,829.48",
+    "change": "-11.01",
+    "changePercent": "-0.29%",
+    "updated": "2026-07-03 15:00 終値",
+    "sourceLabel": "日本経済新聞",
+    "sourceUrl": "https://www.nikkei.com/marketdata/quote/TOPX/"
   },
   {
     "name": "米ドル/円",
-    "value": "152.30",
-    "change": "-0.45",
-    "changePercent": "-0.29%",
-    "updated": "2026-07-06 06:00"
+    "value": "161.85",
+    "change": "",
+    "changePercent": "",
+    "updated": "2026-07-06 参考レート",
+    "sourceLabel": "日本経済新聞",
+    "sourceUrl": "https://www.nikkei.com/marketdata/quote/USDJPY/"
   },
   {
     "name": "日本10年国債金利",
-    "value": "1.150%",
-    "change": "+0.020",
+    "value": "2.700%",
+    "change": "",
     "changePercent": "",
-    "updated": "2026-07-06 15:00"
+    "updated": "2026-07-06 参考値",
+    "sourceLabel": "日本経済新聞",
+    "sourceUrl": "https://www.nikkei.com/marketdata/quote/JP10YT/"
   }
 ]

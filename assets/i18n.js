@@ -10,7 +10,7 @@ const translations = {
     'nav.home': 'ホーム',
     'nav.lectures': 'レクチャー',
     'nav.news': 'ニュース',
-    'nav.about': 'Joeについて',
+    'nav.about': 'Joe Show Kabuについて',
     'nav.contact': 'お問い合わせ',
     'nav.insta': 'Instagramで見る',
 
@@ -24,9 +24,6 @@ const translations = {
 
     'news.sectionTitle': 'Joe Show NEWS 最新マーケット情報',
     'market.title': '本日の主要指数',
-    'market.th.name': '指標',
-    'market.th.value': '現在値',
-    'market.th.change': '前日比',
 
     'lectures.sectionTitle': '最新レクチャー',
     'lectures.seeAll': '全レクチャーを見る',
@@ -93,9 +90,6 @@ const translations = {
 
     'news.sectionTitle': 'Joe Show NEWS — Latest Market Updates',
     'market.title': "Today's Key Market Indices",
-    'market.th.name': 'Indicator',
-    'market.th.value': 'Value',
-    'market.th.change': 'Change',
 
     'lectures.sectionTitle': 'Latest Lectures',
     'lectures.seeAll': 'View All Lectures',

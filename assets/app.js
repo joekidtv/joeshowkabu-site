@@ -98,27 +98,68 @@ async function renderHomeLectures(elId){
 }
 
 // トップページ：本日の主要指数(日経平均・TOPIX・米ドル/円・国債金利など)
-function marketRow(item){
+// 1枚に1指標を表示し、3秒ごとに自動でスライドするカルーセル
+function marketSlide(item){
   const change = String(item.change || '').trim();
   const dir = change.startsWith('-') ? 'down' : (change.startsWith('+') ? 'up' : '');
-  const arrow = dir === 'up' ? '▲' : (dir === 'down' ? '▼' : '');
+  const arrow = dir === 'up' ? '▲ ' : (dir === 'down' ? '▼ ' : '');
   const pct = item.changePercent ? ` (${esc(item.changePercent)})` : '';
+  const changeLine = change ? `<div class="m-change ${dir}">${arrow}${esc(change)}${pct}</div>` : '';
+  const source = item.sourceUrl
+    ? `出典: <a href="${esc(item.sourceUrl)}" target="_blank" rel="noopener">${esc(item.sourceLabel || item.sourceUrl)}</a>`
+    : '';
+  const meta = [esc(item.updated || ''), source].filter(Boolean).join(' ／ ');
   return `
-    <tr>
-      <td class="m-name">${esc(item.name)}</td>
-      <td class="m-value">${esc(item.value)}</td>
-      <td class="m-change ${dir}">${arrow} ${esc(change)}${pct}</td>
-    </tr>`;
+    <div class="market-slide">
+      <div class="m-name">${esc(item.name)}</div>
+      <div class="m-value">${esc(item.value)}</div>
+      ${changeLine}
+      ${meta ? `<div class="m-meta">${meta}</div>` : ''}
+    </div>`;
 }
 
-async function renderMarketIndices(tbodyId, updatedId){
-  const tbody = document.getElementById(tbodyId);
-  if(!tbody) return;
+function startMarketCarousel(trackId, dotsId, intervalMs){
+  const track = document.getElementById(trackId);
+  const dotsWrap = document.getElementById(dotsId);
+  if(!track) return;
+  const slides = track.querySelectorAll('.market-slide');
+  const count = slides.length;
+  if(count <= 1) return;
+  let index = 0;
+  if(dotsWrap){
+    dotsWrap.innerHTML = slides.length
+      ? Array.from({length:count}, (_,i)=>`<button type="button" data-index="${i}" class="${i===0?'active':''}" aria-label="${i+1}"></button>`).join('')
+      : '';
+  }
+  function goTo(i){
+    index = (i + count) % count;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    if(dotsWrap){
+      dotsWrap.querySelectorAll('button').forEach((btn,i)=> btn.classList.toggle('active', i===index));
+    }
+  }
+  if(dotsWrap){
+    dotsWrap.querySelectorAll('button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        goTo(parseInt(btn.getAttribute('data-index'),10));
+        resetTimer();
+      });
+    });
+  }
+  let timer = setInterval(()=> goTo(index+1), intervalMs);
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(()=> goTo(index+1), intervalMs);
+  }
+}
+
+async function renderMarketIndices(trackId, dotsId){
+  const track = document.getElementById(trackId);
+  if(!track) return;
   const data = await fetchJSON('market.json');
-  if(!data || !data.length){ tbody.innerHTML = '<tr><td colspan="3" class="state-msg">市場データを読み込めませんでした。</td></tr>'; return; }
-  tbody.innerHTML = data.map(marketRow).join('');
-  const updatedEl = document.getElementById(updatedId);
-  if(updatedEl && data[0] && data[0].updated){ updatedEl.textContent = `更新: ${esc(data[0].updated)}`; }
+  if(!data || !data.length){ track.innerHTML = '<div class="market-slide"><div class="state-msg">市場データを読み込めませんでした。</div></div>'; return; }
+  track.innerHTML = data.map(marketSlide).join('');
+  startMarketCarousel(trackId, dotsId, 3000);
 }
 
 // トップページ：NEWS
