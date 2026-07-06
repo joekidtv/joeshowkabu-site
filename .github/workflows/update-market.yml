@@ -1,0 +1,42 @@
+name: Update market data
+
+# 市場データ(日経平均・米ドル/円)を毎日自動取得し、market.json を更新してコミットします。
+# コミットが入ると Netlify が自動で再デプロイします。
+
+on:
+  schedule:
+    # 平日の日本時間で朝と夕方に実行(UTC)。市場が閉まっていれば直前営業日の値になります。
+    - cron: "0 7 * * 1-5"   # 16:00 JST(日本市場クローズ後)
+    - cron: "0 21 * * 0-4"  # 06:00 JST(米国市場クローズ後)
+  workflow_dispatch: {}      # 手動実行も可能
+
+# コミットを push するための権限
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update market.json
+        run: python3 scripts/update_market.py
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain market.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add market.json
+            git commit -m "chore: auto-update market data [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

@@ -153,11 +153,35 @@ function startMarketCarousel(trackId, dotsId, intervalMs){
   }
 }
 
+// 米ドル/円は frankfurter.dev(ECB基準・CORS対応)からブラウザ側でも上書き取得する。
+// これにより GitHub Actions の日次更新の合間でも最新の営業日レートが表示される。
+// 市場が閉まっている場合は API が直前営業日の値を返すため、その値が使われる。
+async function liveUsdJpy(items){
+  const target = items.find(it => it.name === '米ドル/円');
+  if(!target) return items;
+  try{
+    const res = await fetch('https://api.frankfurter.dev/v1/latest?base=USD&symbols=JPY', {cache:'no-store'});
+    if(!res.ok) throw new Error('fx load failed');
+    const d = await res.json();
+    const jpy = d && d.rates && d.rates.JPY;
+    if(typeof jpy === 'number'){
+      target.value = jpy.toFixed(2);
+      target.change = '';         // 前日比は日次JSON側に任せ、ライブ値では表示しない
+      target.changePercent = '';
+      target.updated = `${d.date}(ECB基準レート）`;
+      target.sourceLabel = 'Frankfurter / ECB';
+      target.sourceUrl = 'https://www.frankfurter.dev/';
+    }
+  }catch(e){ console.warn('USD/JPY live update skipped:', e); }
+  return items;
+}
+
 async function renderMarketIndices(trackId, dotsId){
   const track = document.getElementById(trackId);
   if(!track) return;
-  const data = await fetchJSON('market.json');
+  let data = await fetchJSON('market.json');
   if(!data || !data.length){ track.innerHTML = '<div class="market-slide"><div class="state-msg">市場データを読み込めませんでした。</div></div>'; return; }
+  data = await liveUsdJpy(data);
   track.innerHTML = data.map(marketSlide).join('');
   startMarketCarousel(trackId, dotsId, 3000);
 }
