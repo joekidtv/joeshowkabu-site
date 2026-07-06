@@ -1,28 +1,28 @@
 [
   {
     "name": "日経平均株価",
-    "value": "69,384.71",
-    "change": "-677.61",
-    "changePercent": "-0.97%",
-    "updated": "2026-07-06 14:35 (自動取得)",
+    "value": "69,737.69",
+    "change": "-324.63",
+    "changePercent": "-0.46%",
+    "updated": "2026-07-06 15:45 (自動取得)",
     "sourceLabel": "日本経済新聞",
     "sourceUrl": "https://www.nikkei.com/marketdata/quote/NK225/"
   },
   {
     "name": "TOPIX",
-    "value": "3,829.48",
-    "change": "-11.01",
-    "changePercent": "-0.29%",
-    "updated": "2026-07-03 15:00 終値",
+    "value": "4,101.96",
+    "change": "+37.36",
+    "changePercent": "+0.92%",
+    "updated": "2026-07-06 15:30",
     "sourceLabel": "日本経済新聞",
     "sourceUrl": "https://www.nikkei.com/marketdata/quote/TOPX/"
   },
   {
     "name": "米ドル/円",
-    "value": "161.97",
-    "change": "+0.05",
-    "changePercent": "+0.03%",
-    "updated": "2026-07-06 14:50 (自動取得)",
+    "value": "162.24",
+    "change": "+0.32",
+    "changePercent": "+0.20%",
+    "updated": "2026-07-06 17:07 (自動取得)",
     "sourceLabel": "日本経済新聞",
     "sourceUrl": "https://www.nikkei.com/marketdata/quote/USDJPY/"
   },
