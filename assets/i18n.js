@@ -179,18 +179,31 @@ function initHeaderCollapse(){
   const header = document.querySelector('header');
   if(!header) return;
   let lastY = window.scrollY;
-  const hideAfter = 80; // これ以下(ページ上部付近)では常に表示する
+  let ticking = false;
+  const hideAfter = 80;   // これ以下(ページ上部付近)では常に表示する
+  const threshold = 8;    // これ未満の揺れ(トラックパッド等の微小スクロール)は無視する
 
-  window.addEventListener('scroll', ()=>{
+  function update(){
     const y = window.scrollY;
+    const delta = y - lastY;
     if(y <= hideAfter){
       header.classList.remove('header-hidden');
-    }else if(y > lastY){
+      lastY = y;
+    }else if(delta > threshold){
       header.classList.add('header-hidden');    // 下スクロール → 隠す
-    }else{
+      lastY = y;
+    }else if(delta < -threshold){
       header.classList.remove('header-hidden');  // 上スクロール → 表示
+      lastY = y;
     }
-    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', ()=>{
+    if(!ticking){
+      requestAnimationFrame(update);
+      ticking = true;
+    }
   }, {passive:true});
 }
 
