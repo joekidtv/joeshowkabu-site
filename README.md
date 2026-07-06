@@ -40,7 +40,7 @@ assets/
 ```
 
 - `category`: 配列。ここに書いた言葉がアーカイブのフィルターに自動で追加されます
-- `thumbnail`: 空欄 `""` でもOK(その場合はグレーの枠が表示される)。画像を使う場合は `assets/thumbs/` に入れてパスを書く
+- `thumbnail`: 空欄 `""` でもOK(その場合は番号+タイトルのデザイン枠が自動表示される)。Instagram投稿1ページ目の画像を使う場合は、`assets/thumbs/lecture01.png` のように連番でファイルを置き、パスを書く(例: `"assets/thumbs/lecture01.png"`)。カード上部の枠(4:5の縦長・太い黒枠)に自動でトリミング表示されます
 - `instagram_url`: その回の投稿URL。まだ無ければプロフィールURLでも可
 - `status`: `"published"`(公開) か `"upcoming"`(近日公開・半透明表示)
 
