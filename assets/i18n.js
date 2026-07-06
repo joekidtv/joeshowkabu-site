@@ -16,7 +16,7 @@ const translations = {
     'nav.insta': 'Instagramで見る',
 
     'hero.title': 'その一歩が、<span class="hl-green">将来の複利</span>になる。<br><span class="hl-red">〜高校生のための金融知識〜</span>',
-    'hero.lead': 'Joe Show Kabuは、中高生向けに株式・投資・お金の仕組みをポップかつ本気で解説するアカウントです。毎日のマーケットニュースと、体系立てたレクチャーで「お金の基礎体力」をつくります。',
+    'hero.lead': 'Joe Show Kabu | 高校生投資家 Joe<br>2021年から投資と経済を学ぶ現役高校生<br>中高生の金融リテラシー向上を目指す情報発信をしています',
     'hero.cta.lectures': 'レクチャーを見る',
     'hero.cta.insta': 'Instagramをフォロー',
 
@@ -87,7 +87,7 @@ const translations = {
     'nav.insta': 'Follow on Instagram',
 
     'hero.title': 'That first step becomes <span class="hl-green">future compound interest</span>.<br><span class="hl-red">— Financial Literacy for Teens —</span>',
-    'hero.lead': 'Joe Show Kabu is an account that explains stocks, investing, and how money works to junior high and high schoolers — playful on the outside, serious on the inside. Daily market news plus structured lectures build your "financial fitness."',
+    'hero.lead': 'Joe Show Kabu | High-School Investor Joe<br>Current high schooler studying investing and economics since 2021<br>Sharing information aimed at improving financial literacy for junior high and high schoolers',
     'hero.cta.lectures': 'View Lectures',
     'hero.cta.insta': 'Follow on Instagram',
 
