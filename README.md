@@ -33,7 +33,7 @@ Netlifyの無料枠(ビルド時間)を使い切ったため、現在は **GitHu
 `main` にpushするたびに自動で再公開されます。ビルド時間の制限が無く、市場データの自動更新(1日3回のコミット)を
 気にせず使えます。
 
-公開URL: `https://<GitHubユーザー名>.github.io/joeshowkabu-site-/`(実際のURLはPages有効化後に確認してください)
+公開URL: https://joekidtv.github.io/joeshowkabu-site/
 
 ### Netlifyを使う場合(代替・課金注意)
 このフォルダごとドラッグ&ドロップするだけで公開できますが、無料枠には月間のビルド時間上限があります。
