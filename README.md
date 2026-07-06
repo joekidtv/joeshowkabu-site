@@ -9,7 +9,7 @@ about.html         Aboutページ
 disclaimer.html    免責事項ページ
 lectures.json      ← レクチャーのデータ(ここを編集)
 news.json          ← NEWSのデータ(ここを編集)
-market.json        ← 本日の主要指数のデータ(TOPIX・国債金利。毎日手動で更新)
+market.json        ← 本日の主要指数のデータ(日経平均・ドル円は自動更新、TOPIX・国債金利は手動)
 market_us.json     ← 本日の米国市場のデータ(NYダウ・S&P500・NASDAQ・米10年金利。自動更新)
 calendar.json      ← 経済カレンダーのイベントデータ(ここを編集)
 assets/
@@ -20,8 +20,10 @@ assets/
   i18n.js          JP/EN言語切り替え
   thumbs/          サムネイル画像を入れる場所
 scripts/
-  update_market_us.py 米国市場データの自動更新スクリプト(GitHub Actionsが実行)
+  update_market.py    日本の市場データ(日経平均・ドル円)の自動更新スクリプト
+  update_market_us.py 米国市場データの自動更新スクリプト
 .github/workflows/
+  update-market.yml    日本の市場データを毎日自動更新するワークフロー
   update-market-us.yml 米国市場データを毎日自動更新するワークフロー
 ```
 
@@ -68,34 +70,39 @@ scripts/
 - `date`: `YYYY-MM-DD` 形式で書くと、サイト側で自動的に `07/10 (木)` のように曜日付きで表示されます
 - `instagram_url`: その回の投稿URLを入れるとカードがリンクになります。空欄 `""` ならリンクなしのカードになります
 
-## 本日の主要指数(手動更新・厳格ルールあり)
-トップページの「NEWS」セクションに、1枚1指標のカードが3秒ごとに自動でスライドするカルーセルとして表示されます。データは `market.json`。
-
-**掲載する指標は現在 TOPIX と日本10年国債金利の2つのみです。** 以前は日経平均株価・米ドル/円も掲載していましたが、
-どちらも東証(JPX)が発表する数値ではない(日経平均は日本経済新聞社、米ドル/円は為替でそもそも取引所発表ではない)ため、
-「情報源は東証に限定する」という方針に基づき掲載対象から外しました。
+## 本日の主要指数(日経平均・米ドル/円は自動更新、TOPIX・国債金利は手動更新)
+トップページの「NEWS」セクションに、1枚1指標のカードが3秒ごとに自動でスライドするカルーセルとして表示されます。データは `market.json`。掲載指標: 日経平均株価 / TOPIX / 米ドル/円 / 日本10年国債金利。
 
 ### 更新ルール(必ず守ること)
-1. **毎日、取引時間終了後(15:30 JST以降)に更新する。** それより前の値・寄り付き値は使わない
-2. **終値ベースの数値のみを使う。** 取引時間中の速報値・概算値は使わない
-3. **TOPIXの情報源は東証(JPX)公式サイトに限定する。** [JPX リアルタイム株価指数値一覧](https://www.jpx.co.jp/markets/indices/realvalues/01.html) を開き、15:30以降に表示される終値をそのまま転記する
+1. **毎日、取引時間終了後(15:30 JST)の値にリセットする。** それより前の値・寄り付き値・ザラ場中の速報値は使わない
+2. **終値ベースの数値のみを使う。**
+3. **情報源は、日本経済新聞・Yahoo Financeなど確度の高いところに限る。** 出典不明のサイトや個人ブログ等は使わない
 
-> **自動化できない理由**: JPXはTOPIXの終値を無料でCSV/API配信していません(公式の機械可読データは有償のJPX Data Cloud / TMI Webサービスのみ)。上記ページの数値もJavaScriptで描画されており、単純なスクリプトでは取得できないため、毎日手動でページを開いて転記する運用にしています。過去に導入したGitHub Actions(Yahoo Finance経由の自動取得)は、日経平均・米ドル/円の掲載終了に伴い撤去しました。
+### 自動更新される指標
+- **日経平均株価 / 米ドル/円**: GitHub Actions(`.github/workflows/update-market.yml`)が平日16:00 JST(東証の取引終了後)に `scripts/update_market.py` を実行し、[Yahoo Finance](https://finance.yahoo.com/) から取得して `market.json` を自動コミットします
+- 日経平均は、Yahoo Financeが返す「その日の正規取引終了時刻(15:30 JST)」を過ぎているかをスクリプト側で確認してから採用します。まだ取引時間中(祝日で取引が無い場合を除く)であれば、その日の更新を見送り既存の値を保持します(取引時間中の速報値を終値として誤採用しないためのフェイルセーフ)
+- 米ドル/円は為替で「引け」という概念が無いため、日経平均と同じ実行タイミング(15:30 JST以降)でのスナップショットを終値相当の値として扱います
+
+> **GitHub Actionsを有効にする手順**: リポジトリの Settings → Actions → General で「Workflow permissions」を **Read and write permissions** にしてください。Actionsタブの "Update market data (JP)" から手動実行(Run workflow)して動作確認できます。
+
+### 手動更新が必要な指標
+- **TOPIX**: 東証(JPX)の公式ページ「[JPX リアルタイム株価指数値一覧](https://www.jpx.co.jp/markets/indices/realvalues/01.html)」を15:30以降に開き、終値を転記します(JPXは無料の機械可読データを提供していないため自動化不可)
+- **日本10年国債金利**: 日本経済新聞のマーケットページ等、確度の高い情報源から15:30以降の値を転記します
 
 ### `market.json` の各フィールド
 ```json
 {
-  "name": "TOPIX",
-  "value": "4,101.96",
-  "change": "+37.36",
-  "changePercent": "+0.92%",
-  "updated": "2026-07-06 15:30 終値",
-  "sourceLabel": "日本取引所グループ(JPX)",
-  "sourceUrl": "https://www.jpx.co.jp/markets/indices/realvalues/01.html"
+  "name": "日経平均株価",
+  "value": "69,737.69",
+  "change": "-6.38",
+  "changePercent": "-0.01%",
+  "updated": "2026-07-06 15:30 (自動取得)",
+  "sourceLabel": "Yahoo Finance",
+  "sourceUrl": "https://finance.yahoo.com/quote/%5EN225/"
 }
 ```
-- `name`: 指標名
-- `value`: 終値の表示テキスト
+- `name`: 指標名。**`日経平均株価` と `米ドル/円` は自動更新の対象キーなので、名前を変えないでください**
+- `value`: 終値(相当)の表示テキスト
 - `change`: 前日比。先頭の `+` / `-` で赤(上昇)/緑(下落)の色と▲▼が付きます。空欄 `""` ならその行は非表示
 - `changePercent`: 前日比(%)。不要なら空欄 `""`
 - `updated`: カード下部に表示される更新日時テキスト。「◯月◯日 15:30 終値」の形式で統一する
