@@ -9,7 +9,7 @@ about.html         Aboutページ
 disclaimer.html    免責事項ページ
 lectures.json      ← レクチャーのデータ(ここを編集)
 news.json          ← NEWSのデータ(ここを編集)
-market.json        ← 本日の主要指数のデータ(日経平均・ドル円は自動更新)
+market.json        ← 本日の主要指数のデータ(TOPIX・国債金利。毎日手動で更新)
 calendar.json      ← 経済カレンダーのイベントデータ(ここを編集)
 assets/
   logo.png         公式ロゴ
@@ -18,10 +18,6 @@ assets/
   calendar.js      経済カレンダーの描画
   i18n.js          JP/EN言語切り替え
   thumbs/          サムネイル画像を入れる場所
-scripts/
-  update_market.py 市場データの自動更新スクリプト(GitHub Actionsが実行)
-.github/workflows/
-  update-market.yml 市場データを毎日自動更新するワークフロー
 ```
 
 ## 公開方法(どちらか)
@@ -67,38 +63,40 @@ scripts/
 - `date`: `YYYY-MM-DD` 形式で書くと、サイト側で自動的に `07/10 (木)` のように曜日付きで表示されます
 - `instagram_url`: その回の投稿URLを入れるとカードがリンクになります。空欄 `""` ならリンクなしのカードになります
 
-## 本日の主要指数(自動更新)
-トップページの「NEWS」セクションに、1枚1指標のカードが3秒ごとに自動でスライドするカルーセルとして表示されます。データは `market.json`。更新方法は指標ごとに次の通りです。
+## 本日の主要指数(手動更新・厳格ルールあり)
+トップページの「NEWS」セクションに、1枚1指標のカードが3秒ごとに自動でスライドするカルーセルとして表示されます。データは `market.json`。
 
-### 自動更新される指標(手作業不要)
-- **日経平均株価 / 米ドル/円**: GitHub Actions(`.github/workflows/update-market.yml`)が毎日決まった時刻に `scripts/update_market.py` を実行し、Yahoo Financeから最新値を取得して `market.json` を自動コミットします。コミットが入るとNetlifyが自動で再デプロイします。市場が閉まっている時間帯は直前営業日の終値が入ります。
-- さらに **米ドル/円** は、ページを開くたびにブラウザ側でも `frankfurter.dev`(ECB基準レート)から取得して上書きするので、日次コミットの合間でも最新の営業日レートになります。
+**掲載する指標は現在 TOPIX と日本10年国債金利の2つのみです。** 以前は日経平均株価・米ドル/円も掲載していましたが、
+どちらも東証(JPX)が発表する数値ではない(日経平均は日本経済新聞社、米ドル/円は為替でそもそも取引所発表ではない)ため、
+「情報源は東証に限定する」という方針に基づき掲載対象から外しました。
 
-> **GitHub Actionsを有効にする手順**: リポジトリの Settings → Actions → General で "Allow all actions" を選び、"Workflow permissions" を **Read and write permissions** にしてください(botがコミットをpushするため)。有効化後、Actionsタブの "Update market data" から手動実行(Run workflow)して動作確認できます。
+### 更新ルール(必ず守ること)
+1. **毎日、取引時間終了後(15:30 JST以降)に更新する。** それより前の値・寄り付き値は使わない
+2. **終値ベースの数値のみを使う。** 取引時間中の速報値・概算値は使わない
+3. **TOPIXの情報源は東証(JPX)公式サイトに限定する。** [JPX リアルタイム株価指数値一覧](https://www.jpx.co.jp/markets/indices/realvalues/01.html) を開き、15:30以降に表示される終値をそのまま転記する
 
-### 手動更新が必要な指標
-- **TOPIX / 日本10年国債金利**: 無料で安定して取得できる公開データソースが見つからなかったため、自動化の対象外です。値が古くなったら `market.json` の該当項目を手で書き換えてください。各項目の `sourceUrl`(日本経済新聞のマーケットページ)を開いて数値を確認し、コピーします。ワークフローはこの2項目を上書きしません(既存値を保持します)。
+> **自動化できない理由**: JPXはTOPIXの終値を無料でCSV/API配信していません(公式の機械可読データは有償のJPX Data Cloud / TMI Webサービスのみ)。上記ページの数値もJavaScriptで描画されており、単純なスクリプトでは取得できないため、毎日手動でページを開いて転記する運用にしています。過去に導入したGitHub Actions(Yahoo Finance経由の自動取得)は、日経平均・米ドル/円の掲載終了に伴い撤去しました。
 
 ### `market.json` の各フィールド
 ```json
 {
-  "name": "日経平均株価",
-  "value": "69,744.07",
-  "change": "+1,010.92",
-  "changePercent": "+1.47%",
-  "updated": "2026-07-03 15:00 終値",
-  "sourceLabel": "日本経済新聞",
-  "sourceUrl": "https://www.nikkei.com/marketdata/quote/NK225/"
+  "name": "TOPIX",
+  "value": "4,101.96",
+  "change": "+37.36",
+  "changePercent": "+0.92%",
+  "updated": "2026-07-06 15:30 終値",
+  "sourceLabel": "日本取引所グループ(JPX)",
+  "sourceUrl": "https://www.jpx.co.jp/markets/indices/realvalues/01.html"
 }
 ```
-- `name`: 指標名。**`日経平均株価` と `米ドル/円` は自動更新の対象キーなので、名前を変えないでください**
-- `value`: 現在値の表示テキスト
+- `name`: 指標名
+- `value`: 終値の表示テキスト
 - `change`: 前日比。先頭の `+` / `-` で赤(上昇)/緑(下落)の色と▲▼が付きます。空欄 `""` ならその行は非表示
 - `changePercent`: 前日比(%)。不要なら空欄 `""`
-- `updated`: カード下部に表示される更新日時テキスト
-- `sourceLabel` / `sourceUrl`: 出典リンクのラベルとURL
+- `updated`: カード下部に表示される更新日時テキスト。「◯月◯日 15:30 終値」の形式で統一する
+- `sourceLabel` / `sourceUrl`: 出典リンクのラベルとURL。TOPIXは必ずJPXの上記ページを設定する
 
-※出典: 日経平均・米ドル/円の自動取得は [Yahoo Finance](https://finance.yahoo.com/)、米ドル/円のブラウザ側ライブ更新は [Frankfurter(ECB基準レート)](https://www.frankfurter.dev/) を利用しています。
+日本10年国債金利は、JPXが直接発表する指標ではないため上記の「東証限定」ルールの対象外です。出典は引き続き日本経済新聞のマーケットページとしています。同様の厳格運用(15:30終値限定)を適用するかどうかは、必要であれば別途ご相談ください。
 
 ## 経済カレンダーを更新するには
 `calendar.html` が経済カレンダーページ、データは `calendar.json` です。
