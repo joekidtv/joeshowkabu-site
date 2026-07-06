@@ -41,7 +41,10 @@ const translations = {
     'footer.nav.disclaimer': '免責事項',
     'footer.nav.contact': 'お問い合わせ',
 
-    'about.pageLead': 'Joe Show Kabuは、「難しそう」で終わりがちなお金の話を、中高生が最後まで読み切れる形に翻訳するプロジェクトです。',
+    'about.pageLead': 'Joe Show Kabu | 高校生投資家 Joe<br>2021年から投資と経済を学ぶ現役高校生<br>中高生の金融リテラシー向上を目指す情報発信をしています',
+    'about.h2.story': 'Story',
+    'about.p.story1': 'ほんの「お小遣い稼ぎ」として中学1年生の時に初めた株式投資。最初は右も左も分からず、とりあえず有名企業の株を買ってみた。そこからどんどん投資の世界に興味を持つようになり、相場の酸いも甘いも経験。そして一つとても重要なことを学んだ。それは、「若いうちからお金についてを学ぶべきだ」ということ。',
+    'about.p.story2': '日本の金融教育は他の先進国の水準に達していない。「物価高」、「円安」、「新NISA」。これらの金融や経済に関わるワードが日々飛び交ってきた今だからこそ、微量ながら自分の経験と知識を基にJoe Show Kabuを通じて同世代の目線から中高生の金融リテラシーを高めたいと思いました。',
     'about.h2.concept': 'コンセプト',
     'about.p.concept': '見た目は<span class="highlight">ポップで親しみやすく</span>、中身は<span class="highlight">一切妥協しない</span>。これがJoe Show Kabuの一貫した方針です。株式・金利・NISA・複利・インデックス投資といったテーマを、専門用語に逃げず、けれど正確さを落とさずに解説していきます。',
     'about.h2.content': '2つのコンテンツ',
@@ -104,7 +107,10 @@ const translations = {
     'footer.nav.disclaimer': 'Disclaimer',
     'footer.nav.contact': 'Contact',
 
-    'about.pageLead': 'Joe Show Kabu is a project that translates money topics — usually written off as "too hard" — into a form junior high and high schoolers can read all the way through.',
+    'about.pageLead': 'Joe Show Kabu | High-School Investor Joe<br>Current high schooler studying investing and economics since 2021<br>Sharing information aimed at improving financial literacy for junior high and high schoolers',
+    'about.h2.story': 'Story',
+    'about.p.story1': 'I started investing in stocks as a junior high 1st-grader, just to "make some extra pocket money." At first I had no idea what I was doing, so I simply bought shares of well-known companies. From there I grew more and more interested in the world of investing, experiencing both the highs and lows of the market. And I learned one very important lesson: you should start learning about money while you\'re young.',
+    'about.p.story2': 'Japan\'s financial education hasn\'t caught up to the standards of other developed countries. "Rising prices," "a weak yen," "the new NISA" — words about finance and the economy that come up constantly these days. That\'s exactly why I wanted to use my own experience and knowledge, however small, to raise financial literacy among junior high and high schoolers from a fellow student\'s perspective through Joe Show Kabu.',
     'about.h2.concept': 'Concept',
     'about.p.concept': 'Look <span class="highlight">pop and approachable</span>, but never <span class="highlight">compromise on substance</span>. That is Joe Show Kabu\'s consistent policy. Topics like stocks, interest rates, NISA, compound interest, and index investing are explained without hiding behind jargon, while staying accurate.',
     'about.h2.content': 'Two Types of Content',
