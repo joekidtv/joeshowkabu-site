@@ -32,13 +32,9 @@ nav ul a.active{color:var(--red);}
 }
 .btn-insta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--black);}
 
-/* instagram QR code (常時表示) */
-.qr-inline{
-  border:2px solid var(--black);background:var(--white);border-radius:var(--r-sm);
-  width:56px;height:56px;padding:4px;box-shadow:4px 4px 0 var(--black);
-  display:inline-flex;align-items:center;justify-content:center;
-}
-.qr-inline img{width:100%;height:100%;object-fit:contain;display:block;}
+/* instagram QR code (常時表示・枠なし) */
+.qr-inline{display:inline-flex;align-items:center;justify-content:center;}
+.qr-inline img{width:88px;height:88px;object-fit:contain;display:block;}
 
 /* language toggle */
 .lang-toggle{display:inline-flex;border:2px solid var(--black);border-radius:999px;overflow:hidden;box-shadow:4px 4px 0 var(--black);}
