@@ -171,6 +171,90 @@ function applyLanguage(lang){
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
   try{ localStorage.setItem('jsk_lang', lang); }catch(e){}
+  setDynamicContentLanguage(lang);
+}
+
+// ---- 動的コンテンツ(レクチャー/NEWS/市場データ/カレンダー)の自動翻訳 ----
+// lectures.json・news.json・market.json・calendar.json は日本語で書かれた1次データなので、
+// data-i18n の対訳辞書ではカバーできない。ENに切り替えた時だけ、MyMemory Translated
+// (無料・CORS対応の翻訳API)でその場翻訳し、JPに戻したら元の日本語表示に戻す。
+const DYN_REGION_SELECTORS = [
+  '#home-lectures', '#archive-grid', '#filters',
+  '#news-strip',
+  '#market-track', '#market-us-track',
+  '#cal-month-label', '#cal-legend', '#cal-grid', '#cal-detail', '#cal-sources'
+];
+const JP_CHAR_RE = /[぀-ヿ㐀-䶿一-鿿]/;
+const dynTranslationCache = {};   // 原文(日本語) -> 翻訳結果(英語) のキャッシュ(同じ文言の再翻訳を避ける)
+const dynNodeRegistry = new Map(); // テキストノード -> {ja, en}
+let dynCurrentLang = 'ja';
+
+async function fetchEnglishTranslation(text){
+  if(dynTranslationCache[text] !== undefined) return dynTranslationCache[text];
+  try{
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=ja|en`);
+    if(!res.ok) throw new Error('translate api error');
+    const data = await res.json();
+    const translated = (data && data.responseData && data.responseData.translatedText) || text;
+    dynTranslationCache[text] = translated;
+    return translated;
+  }catch(e){
+    return text; // 失敗時は原文のまま表示(見た目が壊れないようにするフェイルセーフ)
+  }
+}
+
+function isTranslatableTextNode(node){
+  if(!node.nodeValue || !node.nodeValue.trim()) return false;
+  if(!JP_CHAR_RE.test(node.nodeValue)) return false;
+  const parent = node.parentElement;
+  if(!parent || parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE') return false;
+  return true;
+}
+
+async function registerDynamicNode(node){
+  if(dynNodeRegistry.has(node)) return;
+  const entry = {ja: node.nodeValue, en: null};
+  dynNodeRegistry.set(node, entry);
+  if(dynCurrentLang === 'en'){
+    const en = await fetchEnglishTranslation(entry.ja);
+    entry.en = en;
+    if(dynNodeRegistry.get(node) === entry){ node.nodeValue = en; }
+  }
+}
+
+function scanRegionForDynamicText(root){
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let n;
+  while((n = walker.nextNode())){
+    if(isTranslatableTextNode(n) && !dynNodeRegistry.has(n)){
+      registerDynamicNode(n);
+    }
+  }
+}
+
+function initDynamicTranslation(){
+  const roots = DYN_REGION_SELECTORS.map(sel => document.querySelector(sel)).filter(Boolean);
+  roots.forEach(root => {
+    scanRegionForDynamicText(root);
+    new MutationObserver(() => scanRegionForDynamicText(root))
+      .observe(root, {childList:true, subtree:true, characterData:true});
+  });
+}
+
+function setDynamicContentLanguage(lang){
+  dynCurrentLang = lang;
+  dynNodeRegistry.forEach((entry, node) => {
+    if(lang === 'ja'){
+      node.nodeValue = entry.ja;
+    }else if(entry.en){
+      node.nodeValue = entry.en;
+    }else{
+      fetchEnglishTranslation(entry.ja).then(en => {
+        entry.en = en;
+        if(dynCurrentLang === 'en'){ node.nodeValue = en; }
+      });
+    }
+  });
 }
 
 function initLangToggle(){
@@ -242,6 +326,7 @@ function initInstaModal(){
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
 }
 
+document.addEventListener('DOMContentLoaded', initDynamicTranslation);
 document.addEventListener('DOMContentLoaded', initLangToggle);
 document.addEventListener('DOMContentLoaded', initHeaderCollapse);
 document.addEventListener('DOMContentLoaded', initMenuDrawer);
