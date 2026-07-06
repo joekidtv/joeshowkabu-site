@@ -14,6 +14,7 @@ const translations = {
     'nav.about': 'Joe Show Kabuについて',
     'nav.contact': 'お問い合わせ',
     'nav.insta': 'Instagramで見る',
+    'qr.modalTitle': 'QRコードを読み取ってフォロー',
 
     'hero.title': 'その一歩が、<span class="hl-green">将来の複利</span>になる。<br><span class="hl-red">〜高校生のための金融知識〜</span>',
     'hero.lead': 'Joe Show Kabu | 高校生投資家 Joe<br>2021年から投資と経済を学ぶ現役高校生<br>中高生の金融リテラシー向上を目指す情報発信をしています',
@@ -86,6 +87,7 @@ const translations = {
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.insta': 'Follow on Instagram',
+    'qr.modalTitle': 'Scan to follow on Instagram',
 
     'hero.title': 'That first step becomes <span class="hl-green">future compound interest</span>.<br><span class="hl-red">— Financial Literacy for Teens —</span>',
     'hero.lead': 'Joe Show Kabu | High-School Investor Joe<br>Current high schooler studying investing and economics since 2021<br>Sharing information aimed at improving financial literacy for junior high and high schoolers',
@@ -174,4 +176,19 @@ function initLangToggle(){
   });
 }
 
+// Instagram QRコードのモーダル(全ページ共通のヘッダーボタンから開く)
+function initInstagramQr(){
+  const btn = document.getElementById('qr-btn');
+  const modal = document.getElementById('qr-modal');
+  if(!btn || !modal) return;
+  const closeBtn = modal.querySelector('.qr-modal-close');
+  function open(){ modal.classList.add('open'); }
+  function close(){ modal.classList.remove('open'); }
+  btn.addEventListener('click', open);
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', (e)=>{ if(e.target === modal) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+}
+
 document.addEventListener('DOMContentLoaded', initLangToggle);
+document.addEventListener('DOMContentLoaded', initInstagramQr);
