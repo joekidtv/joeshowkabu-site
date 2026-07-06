@@ -16,7 +16,8 @@ img{max-width:100%;}
 .container{max-width:1100px;margin:0 auto;padding:0 32px;}
 
 /* header */
-header{padding:24px 0;position:sticky;top:0;background:var(--white);z-index:20;border-bottom:2px solid var(--black);}
+header{padding:24px 0;position:sticky;top:0;background:var(--white);z-index:20;border-bottom:2px solid var(--black);transition:transform .25s ease;}
+header.header-hidden{transform:translateY(-100%);}
 header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
 .logo-link{display:inline-flex;}
 .logo-img{height:56px;width:auto;display:block;}

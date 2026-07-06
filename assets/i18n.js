@@ -174,4 +174,25 @@ function initLangToggle(){
   });
 }
 
+// 折りたたみ式ヘッダー: 下スクロールで隠し、上スクロール or ページ最上部で再表示する(PC・スマホ共通)
+function initHeaderCollapse(){
+  const header = document.querySelector('header');
+  if(!header) return;
+  let lastY = window.scrollY;
+  const hideAfter = 80; // これ以下(ページ上部付近)では常に表示する
+
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    if(y <= hideAfter){
+      header.classList.remove('header-hidden');
+    }else if(y > lastY){
+      header.classList.add('header-hidden');    // 下スクロール → 隠す
+    }else{
+      header.classList.remove('header-hidden');  // 上スクロール → 表示
+    }
+    lastY = y;
+  }, {passive:true});
+}
+
 document.addEventListener('DOMContentLoaded', initLangToggle);
+document.addEventListener('DOMContentLoaded', initHeaderCollapse);
