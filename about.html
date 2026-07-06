@@ -29,12 +29,19 @@
         <button type="button" data-lang="ja" class="active">JP</button>
         <button type="button" data-lang="en">EN</button>
       </div>
-      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta" data-i18n="nav.insta">Instagramで見る</a>
-      <div class="qr-inline">
-        <img src="assets/instagram-qr.png" alt="Joe Show Kabu Instagram QRコード (@joeshowkabu)">
-      </div>
+      <button type="button" id="insta-btn" class="btn-insta" data-i18n="nav.insta">Instagramで見る</button>
     </div>
   </header>
+
+  <div class="insta-modal-backdrop" id="insta-modal-backdrop"></div>
+  <div class="insta-modal" id="insta-modal">
+    <button type="button" class="insta-modal-close" id="insta-modal-close" aria-label="閉じる">×</button>
+    <div class="insta-modal-title" data-i18n="instaModal.title">Instagramで見る</div>
+    <img src="assets/instagram-qr.png" class="insta-modal-qr" alt="Joe Show Kabu Instagram QRコード (@joeshowkabu)">
+    <p class="insta-modal-caption" data-i18n="instaModal.scanText">スマホでQRコードを読み取る</p>
+    <div class="insta-modal-divider" data-i18n="instaModal.or">または</div>
+    <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn btn-primary insta-modal-open" data-i18n="instaModal.openBtn">PCでInstagramを開く</a>
+  </div>
 
   <button type="button" id="menu-toggle" class="menu-toggle" aria-label="メニューを開く">
     <span></span><span></span><span></span>

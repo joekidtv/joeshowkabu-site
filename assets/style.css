@@ -64,9 +64,26 @@ nav ul a.active{color:var(--red);}
 .menu-drawer .lang-toggle{align-self:flex-start;}
 .menu-drawer .btn-insta{align-self:flex-start;}
 
-/* instagram QR code (常時表示・枠なし) */
-.qr-inline{display:inline-flex;align-items:center;justify-content:center;}
-.qr-inline img{width:88px;height:88px;object-fit:contain;display:block;}
+/* instagram: QRコード or 直接開く、を選べるモーダル */
+.insta-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:50;display:none;}
+.insta-modal-backdrop.open{display:block;}
+.insta-modal{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:51;
+  background:var(--white);border:3px solid var(--black);border-radius:var(--r-lg);
+  box-shadow:8px 8px 0 var(--black);padding:36px 32px;max-width:320px;width:90vw;
+  text-align:center;display:none;
+}
+.insta-modal.open{display:block;}
+.insta-modal-close{
+  position:absolute;top:-16px;right:-16px;width:36px;height:36px;
+  border:2px solid var(--black);border-radius:999px;background:var(--white);
+  font-weight:900;font-size:16px;cursor:pointer;box-shadow:3px 3px 0 var(--black);
+}
+.insta-modal-title{font-weight:900;font-size:18px;margin-bottom:20px;}
+.insta-modal-qr{width:160px;height:160px;object-fit:contain;display:block;margin:0 auto 10px;}
+.insta-modal-caption{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 20px;}
+.insta-modal-divider{font-size:12px;font-weight:900;color:#999;margin:0 0 20px;position:relative;}
+.insta-modal-open{width:100%;box-sizing:border-box;}
 
 /* language toggle */
 .lang-toggle{display:inline-flex;border:2px solid var(--black);border-radius:999px;overflow:hidden;box-shadow:4px 4px 0 var(--black);}

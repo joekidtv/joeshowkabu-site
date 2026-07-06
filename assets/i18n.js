@@ -14,6 +14,10 @@ const translations = {
     'nav.about': 'Joe Show Kabuについて',
     'nav.contact': 'お問い合わせ',
     'nav.insta': 'Instagramで見る',
+    'instaModal.title': 'Instagramで見る',
+    'instaModal.scanText': 'スマホでQRコードを読み取る',
+    'instaModal.or': 'または',
+    'instaModal.openBtn': 'PCでInstagramを開く',
 
     'hero.title': 'その一歩が、<span class="hl-green">将来の複利</span>になる。<br><span class="hl-red">〜高校生のための金融知識〜</span>',
     'hero.lead': 'Joe Show Kabu | 高校生投資家 Joe<br>2021年から投資と経済を学ぶ現役高校生<br>中高生の金融リテラシー向上を目指す情報発信をしています',
@@ -86,6 +90,10 @@ const translations = {
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.insta': 'Follow on Instagram',
+    'instaModal.title': 'Follow on Instagram',
+    'instaModal.scanText': 'Scan the QR code on your phone',
+    'instaModal.or': 'or',
+    'instaModal.openBtn': 'Open Instagram on this computer',
 
     'hero.title': 'That first step becomes <span class="hl-green">future compound interest</span>.<br><span class="hl-red">— Financial Literacy for Teens —</span>',
     'hero.lead': 'Joe Show Kabu | High-School Investor Joe<br>Current high schooler studying investing and economics since 2021<br>Sharing information aimed at improving financial literacy for junior high and high schoolers',
@@ -217,6 +225,24 @@ function initMenuDrawer(){
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 }
 
+// 「Instagramで見る」ボタン: QRコードを読み取る/PCで直接開く、をユーザーが選べるモーダル
+function initInstaModal(){
+  const btn = document.getElementById('insta-btn');
+  const modal = document.getElementById('insta-modal');
+  const backdrop = document.getElementById('insta-modal-backdrop');
+  const closeBtn = document.getElementById('insta-modal-close');
+  if(!btn || !modal || !backdrop) return;
+
+  function open(){ modal.classList.add('open'); backdrop.classList.add('open'); }
+  function close(){ modal.classList.remove('open'); backdrop.classList.remove('open'); }
+
+  btn.addEventListener('click', open);
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+}
+
 document.addEventListener('DOMContentLoaded', initLangToggle);
 document.addEventListener('DOMContentLoaded', initHeaderCollapse);
 document.addEventListener('DOMContentLoaded', initMenuDrawer);
+document.addEventListener('DOMContentLoaded', initInstaModal);
