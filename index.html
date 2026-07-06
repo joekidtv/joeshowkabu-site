@@ -18,13 +18,17 @@
       <nav>
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="lectures.html">レクチャー</a></li>
+          <li><a href="lectures.html" data-i18n="nav.lectures">レクチャー</a></li>
           <li><a href="#news">NEWS</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">お問い合わせ</a></li>
         </ul>
       </nav>
-      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta">Instagramで見る</a>
+      <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Language toggle">
+        <button type="button" data-lang="ja" class="active">JP</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta" data-i18n="nav.insta">Instagramで見る</a>
     </div>
   </header>
 
@@ -41,30 +45,30 @@
         <div class="candle" style="height:96px;background:var(--red);"></div>
         <div class="candle" style="height:82px;background:var(--red);"></div>
       </div>
-      <h1>その一歩が、<span class="hl-green">将来の複利</span>になる。<br><span class="hl-red">〜高校生のための金融知識〜</span></h1>
-      <p class="lead">Joe Show Kabuは、中高生向けに株式・投資・お金の仕組みをポップかつ本気で解説するアカウントです。毎日のマーケットニュースと、体系立てたレクチャーで「お金の基礎体力」をつくります。</p>
+      <h1 data-i18n="hero.title">その一歩が、<span class="hl-green">将来の複利</span>になる。<br><span class="hl-red">〜高校生のための金融知識〜</span></h1>
+      <p class="lead" data-i18n="hero.lead">Joe Show Kabuは、中高生向けに株式・投資・お金の仕組みをポップかつ本気で解説するアカウントです。毎日のマーケットニュースと、体系立てたレクチャーで「お金の基礎体力」をつくります。</p>
       <div class="cta-row">
-        <a href="lectures.html" class="btn btn-primary">レクチャーを見る</a>
-        <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn btn-secondary">Instagramをフォロー</a>
+        <a href="lectures.html" class="btn btn-primary" data-i18n="hero.cta.lectures">レクチャーを見る</a>
+        <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn btn-secondary" data-i18n="hero.cta.insta">Instagramをフォロー</a>
       </div>
     </section>
 
     <div class="disclaimer">
-      <span class="label">免責事項</span>
-      当サイトは一般的な金融知識の普及を目的としており、特定の銘柄推奨や売買指示は一切行いません。投資は自己責任です。
+      <span class="label" data-i18n="home.disclaimer.label">免責事項</span>
+      <span data-i18n="home.disclaimer.text">当サイトは一般的な金融知識の普及を目的としており、特定の銘柄推奨や売買指示は一切行いません。投資は自己責任です。</span>
     </div>
 
     <section id="news">
-      <div class="section-title"><span class="badge">NEWS</span>Joe Show NEWS 最新マーケット情報</div>
+      <div class="section-title"><span class="badge">NEWS</span><span data-i18n="news.sectionTitle">Joe Show NEWS 最新マーケット情報</span></div>
 
       <div class="market-board">
         <div class="market-board-head">
-          <span class="market-board-title">本日の主要指数</span>
+          <span class="market-board-title" data-i18n="market.title">本日の主要指数</span>
           <span class="market-updated" id="market-updated"></span>
         </div>
         <table class="market-table">
           <thead>
-            <tr><th>指標</th><th>現在値</th><th>前日比</th></tr>
+            <tr><th data-i18n="market.th.name">指標</th><th data-i18n="market.th.value">現在値</th><th data-i18n="market.th.change">前日比</th></tr>
           </thead>
           <tbody id="market-table-body">
             <tr><td colspan="3" class="state-msg">読み込み中…</td></tr>
@@ -76,23 +80,23 @@
     </section>
 
     <section id="lectures">
-      <div class="section-title"><span class="badge">LECTURE</span>最新レクチャー</div>
+      <div class="section-title"><span class="badge">LECTURE</span><span data-i18n="lectures.sectionTitle">最新レクチャー</span></div>
       <div class="lecture-grid" id="home-lectures"><div class="state-msg">読み込み中…</div></div>
-      <div class="see-all"><a href="lectures.html" class="btn btn-primary">全レクチャーを見る</a></div>
+      <div class="see-all"><a href="lectures.html" class="btn btn-primary" data-i18n="lectures.seeAll">全レクチャーを見る</a></div>
     </section>
 
     <section id="contact">
-      <div class="section-title"><span class="badge">CONTACT</span>お問い合わせ</div>
+      <div class="section-title"><span class="badge">CONTACT</span><span data-i18n="contact.sectionTitle">お問い合わせ</span></div>
       <div class="contact-grid">
         <div class="contact-card">
-          <span class="label">メールでのお問い合わせ</span>
-          <p>joe.kid.air@gmail.com にご連絡ください。</p>
-          <a href="mailto:joe.kid.air@gmail.com" class="btn btn-secondary">メールを送る</a>
+          <span class="label" data-i18n="contact.email.label">メールでのお問い合わせ</span>
+          <p data-i18n="contact.email.text">joe.kid.air@gmail.com にご連絡ください。</p>
+          <a href="mailto:joe.kid.air@gmail.com" class="btn btn-secondary" data-i18n="contact.email.btn">メールを送る</a>
         </div>
         <div class="contact-card">
-          <span class="label">お問い合わせフォーム</span>
-          <p>フォームからご用件をお伝えください。</p>
-          <a href="https://docs.google.com/forms/d/1GYSi4U3zMACP50bkATfypFva-uC0yQ7SLwhLvsP0Hpk/viewform" target="_blank" rel="noopener" class="btn btn-primary">フォームを開く</a>
+          <span class="label" data-i18n="contact.form.label">お問い合わせフォーム</span>
+          <p data-i18n="contact.form.text">フォームからご用件をお伝えください。</p>
+          <a href="https://docs.google.com/forms/d/1GYSi4U3zMACP50bkATfypFva-uC0yQ7SLwhLvsP0Hpk/viewform" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="contact.form.btn">フォームを開く</a>
         </div>
       </div>
     </section>
@@ -101,15 +105,15 @@
   <footer>
     <div class="container">
       <div class="disclaimer">
-        <span class="label">免責事項</span>
-        当アカウント(Joe Show Kabu)で発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。資産運用には元本割れのリスクがあります。最終的な投資判断は必ずご自身で自己責任で行ってください。
+        <span class="label" data-i18n="home.disclaimer.label">免責事項</span>
+        <span data-i18n="footer.disclaimer">当アカウント(Joe Show Kabu)で発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。資産運用には元本割れのリスクがあります。最終的な投資判断は必ずご自身で自己責任で行ってください。</span>
       </div>
       <div class="footer-nav">
         <a href="index.html">Home</a>
-        <a href="lectures.html">レクチャー</a>
+        <a href="lectures.html" data-i18n="footer.nav.lectures">レクチャー</a>
         <a href="about.html">About</a>
-        <a href="disclaimer.html">免責事項</a>
-        <a href="#contact">お問い合わせ</a>
+        <a href="disclaimer.html" data-i18n="footer.nav.disclaimer">免責事項</a>
+        <a href="#contact" data-i18n="footer.nav.contact">お問い合わせ</a>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Joe Show Kabu</div>
@@ -118,6 +122,7 @@
     </div>
   </footer>
 </div>
+<script src="assets/i18n.js"></script>
 <script src="assets/app.js"></script>
 <script>
   renderMarketIndices('market-table-body', 'market-updated');

@@ -18,20 +18,24 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="lectures.html" class="active">レクチャー</a></li>
+          <li><a href="lectures.html" class="active" data-i18n="nav.lectures">レクチャー</a></li>
           <li><a href="index.html#news">NEWS</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="index.html#contact">お問い合わせ</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">お問い合わせ</a></li>
         </ul>
       </nav>
-      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta">Instagramで見る</a>
+      <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Language toggle">
+        <button type="button" data-lang="ja" class="active">JP</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta" data-i18n="nav.insta">Instagramで見る</a>
     </div>
   </header>
 
   <div class="container">
     <div class="page-head">
-      <h1>レクチャーアーカイブ</h1>
-      <p>株式・投資・お金の仕組みを、体系立てて学べる全レクチャー一覧です。新しい回はInstagram投稿と同時にここへ追加されます。</p>
+      <h1 data-i18n="lecturesPage.pageTitle">レクチャーアーカイブ</h1>
+      <p data-i18n="lecturesPage.pageLead">株式・投資・お金の仕組みを、体系立てて学べる全レクチャー一覧です。新しい回はInstagram投稿と同時にここへ追加されます。</p>
     </div>
 
     <div class="filters" id="filters"></div>
@@ -44,15 +48,15 @@
   <footer>
     <div class="container">
       <div class="disclaimer">
-        <span class="label">免責事項</span>
-        当アカウント(Joe Show Kabu)で発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。資産運用には元本割れのリスクがあります。最終的な投資判断は必ずご自身で自己責任で行ってください。
+        <span class="label" data-i18n="home.disclaimer.label">免責事項</span>
+        <span data-i18n="footer.disclaimer">当アカウント(Joe Show Kabu)で発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。資産運用には元本割れのリスクがあります。最終的な投資判断は必ずご自身で自己責任で行ってください。</span>
       </div>
       <div class="footer-nav">
         <a href="index.html">Home</a>
-        <a href="lectures.html">レクチャー</a>
+        <a href="lectures.html" data-i18n="footer.nav.lectures">レクチャー</a>
         <a href="about.html">About</a>
-        <a href="disclaimer.html">免責事項</a>
-        <a href="index.html#contact">お問い合わせ</a>
+        <a href="disclaimer.html" data-i18n="footer.nav.disclaimer">免責事項</a>
+        <a href="index.html#contact" data-i18n="footer.nav.contact">お問い合わせ</a>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Joe Show Kabu</div>
@@ -61,6 +65,7 @@
     </div>
   </footer>
 </div>
+<script src="assets/i18n.js"></script>
 <script src="assets/app.js"></script>
 <script>
   renderArchive('archive-grid', 'filters');

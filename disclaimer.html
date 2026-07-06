@@ -18,37 +18,41 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="lectures.html">レクチャー</a></li>
+          <li><a href="lectures.html" data-i18n="nav.lectures">レクチャー</a></li>
           <li><a href="index.html#news">NEWS</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="index.html#contact">お問い合わせ</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">お問い合わせ</a></li>
         </ul>
       </nav>
-      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta">Instagramで見る</a>
+      <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Language toggle">
+        <button type="button" data-lang="ja" class="active">JP</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta" data-i18n="nav.insta">Instagramで見る</a>
     </div>
   </header>
 
   <div class="container">
     <div class="page-head">
-      <h1>免責事項</h1>
-      <p>Joe Show Kabu(以下「当アカウント」)をご利用いただく前に、以下の内容をご確認ください。</p>
+      <h1 data-i18n="disclaimerPage.pageTitle">免責事項</h1>
+      <p data-i18n="disclaimerPage.pageLead">Joe Show Kabu(以下「当アカウント」)をご利用いただく前に、以下の内容をご確認ください。</p>
     </div>
 
     <div class="prose">
-      <h2>情報の目的</h2>
-      <p>当アカウントで発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。</p>
+      <h2 data-i18n="disclaimerPage.h2.purpose">情報の目的</h2>
+      <p data-i18n="disclaimerPage.p.purpose">当アカウントで発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。</p>
 
-      <h2>投資判断について</h2>
-      <p>資産運用には元本割れのリスクがあります。当アカウントの情報を参考にされる場合でも、最終的な投資判断は必ずご自身の責任において行ってください。当アカウントは、掲載情報を利用したことによって生じたいかなる損害についても責任を負いません。</p>
+      <h2 data-i18n="disclaimerPage.h2.decision">投資判断について</h2>
+      <p data-i18n="disclaimerPage.p.decision">資産運用には元本割れのリスクがあります。当アカウントの情報を参考にされる場合でも、最終的な投資判断は必ずご自身の責任において行ってください。当アカウントは、掲載情報を利用したことによって生じたいかなる損害についても責任を負いません。</p>
 
-      <h2>情報の正確性</h2>
-      <p>掲載する数値やデータは、信頼できると考えられる情報源に基づいて作成していますが、その正確性・完全性を保証するものではありません。情報は予告なく変更・削除される場合があります。</p>
+      <h2 data-i18n="disclaimerPage.h2.accuracy">情報の正確性</h2>
+      <p data-i18n="disclaimerPage.p.accuracy">掲載する数値やデータは、信頼できると考えられる情報源に基づいて作成していますが、その正確性・完全性を保証するものではありません。情報は予告なく変更・削除される場合があります。</p>
 
-      <h2>シミュレーションについて</h2>
-      <p>当アカウントで示す運用シミュレーションは、過去のデータや一定の前提に基づく試算であり、将来の成果を保証するものではありません。</p>
+      <h2 data-i18n="disclaimerPage.h2.simulation">シミュレーションについて</h2>
+      <p data-i18n="disclaimerPage.p.simulation">当アカウントで示す運用シミュレーションは、過去のデータや一定の前提に基づく試算であり、将来の成果を保証するものではありません。</p>
 
-      <h2>お問い合わせ</h2>
-      <p>本免責事項に関するご質問は、<a href="index.html#contact" style="color:var(--red);font-weight:900;text-decoration:underline;">お問い合わせ</a>よりご連絡ください。</p>
+      <h2 data-i18n="disclaimerPage.h2.contact">お問い合わせ</h2>
+      <p data-i18n="disclaimerPage.p.contact">本免責事項に関するご質問は、<a href="index.html#contact" style="color:var(--red);font-weight:900;text-decoration:underline;">お問い合わせ</a>よりご連絡ください。</p>
     </div>
   </div>
 
@@ -56,10 +60,10 @@
     <div class="container">
       <div class="footer-nav">
         <a href="index.html">Home</a>
-        <a href="lectures.html">レクチャー</a>
+        <a href="lectures.html" data-i18n="footer.nav.lectures">レクチャー</a>
         <a href="about.html">About</a>
         <a href="disclaimer.html">免責事項</a>
-        <a href="index.html#contact">お問い合わせ</a>
+        <a href="index.html#contact" data-i18n="footer.nav.contact">お問い合わせ</a>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Joe Show Kabu</div>
@@ -68,5 +72,6 @@
     </div>
   </footer>
 </div>
+<script src="assets/i18n.js"></script>
 </body>
 </html>
