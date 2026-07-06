@@ -53,6 +53,19 @@ nav ul a.active{color:var(--red);}
 }
 section{padding:50px 0;}
 
+/* market board (本日の主要指数) */
+.market-board{border:2px solid var(--black);border-radius:var(--r-md);box-shadow:4px 4px 0 var(--black);background:var(--white);padding:20px 24px;margin-bottom:28px;}
+.market-board-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.market-board-title{font-weight:900;font-size:15px;}
+.market-updated{font-size:12px;font-weight:700;color:#555;}
+.market-table{width:100%;border-collapse:collapse;font-size:14px;}
+.market-table th{text-align:left;font-weight:900;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid var(--black);}
+.market-table td{padding:10px 6px;border-bottom:1px solid #ddd;font-weight:700;}
+.market-table tr:last-child td{border-bottom:none;}
+.market-table .m-name{font-weight:900;}
+.market-table .m-change.up{color:var(--red);}
+.market-table .m-change.down{color:var(--green);}
+
 /* news strip */
 .news-strip{display:flex;gap:18px;overflow-x:auto;padding-bottom:10px;}
 .news-card{

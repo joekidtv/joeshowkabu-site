@@ -56,6 +56,22 @@
 
     <section id="news">
       <div class="section-title"><span class="badge">NEWS</span>Joe Show NEWS 最新マーケット情報</div>
+
+      <div class="market-board">
+        <div class="market-board-head">
+          <span class="market-board-title">本日の主要指数</span>
+          <span class="market-updated" id="market-updated"></span>
+        </div>
+        <table class="market-table">
+          <thead>
+            <tr><th>指標</th><th>現在値</th><th>前日比</th></tr>
+          </thead>
+          <tbody id="market-table-body">
+            <tr><td colspan="3" class="state-msg">読み込み中…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="news-strip" id="news-strip"><div class="state-msg">読み込み中…</div></div>
     </section>
 
@@ -104,6 +120,7 @@
 </div>
 <script src="assets/app.js"></script>
 <script>
+  renderMarketIndices('market-table-body', 'market-updated');
   renderNews('news-strip');
   renderHomeLectures('home-lectures');
 </script>

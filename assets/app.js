@@ -97,6 +97,30 @@ async function renderHomeLectures(elId){
   el.innerHTML = latest.map(lectureCard).join('');
 }
 
+// トップページ：本日の主要指数(日経平均・TOPIX・米ドル/円・国債金利など)
+function marketRow(item){
+  const change = String(item.change || '').trim();
+  const dir = change.startsWith('-') ? 'down' : (change.startsWith('+') ? 'up' : '');
+  const arrow = dir === 'up' ? '▲' : (dir === 'down' ? '▼' : '');
+  const pct = item.changePercent ? ` (${esc(item.changePercent)})` : '';
+  return `
+    <tr>
+      <td class="m-name">${esc(item.name)}</td>
+      <td class="m-value">${esc(item.value)}</td>
+      <td class="m-change ${dir}">${arrow} ${esc(change)}${pct}</td>
+    </tr>`;
+}
+
+async function renderMarketIndices(tbodyId, updatedId){
+  const tbody = document.getElementById(tbodyId);
+  if(!tbody) return;
+  const data = await fetchJSON('market.json');
+  if(!data || !data.length){ tbody.innerHTML = '<tr><td colspan="3" class="state-msg">市場データを読み込めませんでした。</td></tr>'; return; }
+  tbody.innerHTML = data.map(marketRow).join('');
+  const updatedEl = document.getElementById(updatedId);
+  if(updatedEl && data[0] && data[0].updated){ updatedEl.textContent = `更新: ${esc(data[0].updated)}`; }
+}
+
 // トップページ：NEWS
 async function renderNews(elId){
   const el = document.getElementById(elId);
