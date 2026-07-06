@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>レクチャーアーカイブ | Joe Show Kabu</title>
+<meta name="description" content="株式・投資・お金の仕組みを体系立てて学べるJoe Show Kabuの全レクチャー一覧。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zilla+Slab:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="frame">
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo-link"><img src="assets/logo.png" alt="Joe Show Kabu" class="logo-img"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lectures.html" class="active">レクチャー</a></li>
+          <li><a href="index.html#news">NEWS</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta">Instagramで見る</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-head">
+      <h1>レクチャーアーカイブ</h1>
+      <p>株式・投資・お金の仕組みを、体系立てて学べる全レクチャー一覧です。新しい回はInstagram投稿と同時にここへ追加されます。</p>
+    </div>
+
+    <div class="filters" id="filters"></div>
+
+    <section>
+      <div class="lecture-grid" id="archive-grid"><div class="state-msg">読み込み中…</div></div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="disclaimer">
+        <span class="label">免責事項</span>
+        当アカウント(Joe Show Kabu)で発信する情報は、一般的な経済の仕組みおよび個人の学習記録を目的としたものであり、特定の金融商品の推奨、売買の指示、または将来の市場動向を示唆・保証するものではありません。資産運用には元本割れのリスクがあります。最終的な投資判断は必ずご自身で自己責任で行ってください。
+      </div>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="lectures.html">レクチャー</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">免責事項</a>
+        <a href="index.html#contact">お問い合わせ</a>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Joe Show Kabu</div>
+        <a href="https://www.instagram.com/joeshowkabu/" target="_blank" rel="noopener" class="btn-insta">Instagram</a>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="assets/app.js"></script>
+<script>
+  renderArchive('archive-grid', 'filters');
+</script>
+</body>
+</html>
