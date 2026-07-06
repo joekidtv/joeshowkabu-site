@@ -7,7 +7,10 @@
 
 const translations = {
   ja: {
+    'nav.home': 'ホーム',
     'nav.lectures': 'レクチャー',
+    'nav.news': 'ニュース',
+    'nav.about': 'Joeについて',
     'nav.contact': 'お問い合わせ',
     'nav.insta': 'Instagramで見る',
 
@@ -73,7 +76,10 @@ const translations = {
     'disclaimerPage.p.contact': '本免責事項に関するご質問は、<a href="index.html#contact" style="color:var(--red);font-weight:900;text-decoration:underline;">お問い合わせ</a>よりご連絡ください。'
   },
   en: {
+    'nav.home': 'Home',
     'nav.lectures': 'Lectures',
+    'nav.news': 'News',
+    'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.insta': 'Follow on Instagram',
 
