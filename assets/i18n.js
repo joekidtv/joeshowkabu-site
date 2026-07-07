@@ -326,8 +326,19 @@ function initInstaModal(){
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
 }
 
+// トップに戻るボタン(一定量スクロールすると右下に表示)
+function initBackToTop(){
+  const btn = document.getElementById('back-to-top');
+  if(!btn) return;
+  window.addEventListener('scroll', ()=>{
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, {passive:true});
+  btn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+}
+
 document.addEventListener('DOMContentLoaded', initDynamicTranslation);
 document.addEventListener('DOMContentLoaded', initLangToggle);
 document.addEventListener('DOMContentLoaded', initHeaderCollapse);
 document.addEventListener('DOMContentLoaded', initMenuDrawer);
 document.addEventListener('DOMContentLoaded', initInstaModal);
+document.addEventListener('DOMContentLoaded', initBackToTop);

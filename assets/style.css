@@ -9,6 +9,7 @@
   --r-lg:22px;
 }
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{margin:0;font-family:'Noto Sans JP',sans-serif;color:var(--black);background:var(--white);line-height:1.7;}
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;}
@@ -42,6 +43,10 @@ nav ul a.active{color:var(--red);}
 }
 .menu-toggle:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--black);}
 .menu-toggle span{width:22px;height:2px;background:var(--black);display:block;}
+/* PCでは固定表示の三本線ボタンとヘッダー右端の「Instagramで見る」が重ならないよう右側に余白を確保 */
+@media (min-width:901px){
+  header .container{padding-right:96px;}
+}
 
 .menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:40;display:none;}
 .menu-backdrop.open{display:block;}
@@ -63,6 +68,20 @@ nav ul a.active{color:var(--red);}
 .menu-drawer nav ul a.active{color:var(--red);}
 .menu-drawer .lang-toggle{align-self:flex-start;}
 .menu-drawer .btn-insta{align-self:flex-start;}
+.menu-drawer .drawer-logo{display:inline-flex;align-self:flex-start;}
+.menu-drawer .drawer-logo img{height:48px;width:auto;display:block;}
+
+/* back to top (一定量スクロールすると表示) */
+.back-to-top{
+  position:fixed;bottom:24px;right:20px;z-index:30;
+  width:48px;height:48px;border:2px solid var(--black);border-radius:999px;
+  background:var(--white);box-shadow:4px 4px 0 var(--black);cursor:pointer;
+  font-weight:900;font-size:18px;color:var(--black);
+  display:none;align-items:center;justify-content:center;
+  transition:transform .1s, box-shadow .1s;
+}
+.back-to-top.visible{display:flex;}
+.back-to-top:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--black);}
 
 /* instagram: QRコード or 直接開く、を選べるモーダル */
 .insta-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:50;display:none;}
