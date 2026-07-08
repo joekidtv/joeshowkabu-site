@@ -122,22 +122,52 @@ function startMarketCarousel(trackId, dotsId, intervalMs){
   const track = document.getElementById(trackId);
   const dotsWrap = document.getElementById(dotsId);
   if(!track) return;
-  const slides = track.querySelectorAll('.market-slide');
-  const count = slides.length;
+  const realSlides = Array.from(track.querySelectorAll('.market-slide'));
+  const count = realSlides.length;
   if(count <= 1) return;
+
+  // 4枚目→1枚目で逆戻りせず同じ方向に流れ続けて見えるよう、先頭スライドの複製を末尾に足しておく。
+  // 複製に到達したら、トランジション終了直後だけアニメ無しで本物の先頭(index 0)へ瞬時に戻す。
+  const clone = realSlides[0].cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  track.appendChild(clone);
+
   let index = 0;
   if(dotsWrap){
-    dotsWrap.innerHTML = slides.length
-      ? Array.from({length:count}, (_,i)=>`<button type="button" data-index="${i}" class="${i===0?'active':''}" aria-label="${i+1}"></button>`).join('')
-      : '';
+    dotsWrap.innerHTML = Array.from({length:count}, (_,i)=>`<button type="button" data-index="${i}" class="${i===0?'active':''}" aria-label="${i+1}"></button>`).join('');
   }
-  function goTo(i){
-    index = (i + count) % count;
+
+  function updateDots(){
+    if(!dotsWrap) return;
+    const realIndex = index % count;
+    dotsWrap.querySelectorAll('button').forEach((btn,i)=> btn.classList.toggle('active', i===realIndex));
+  }
+
+  function goTo(i, animate){
+    if(animate === false){ track.style.transition = 'none'; }
+    index = i;
     track.style.transform = `translateX(-${index * 100}%)`;
-    if(dotsWrap){
-      dotsWrap.querySelectorAll('button').forEach((btn,i)=> btn.classList.toggle('active', i===index));
+    updateDots();
+    if(animate === false){
+      void track.offsetHeight; // reflowを強制してtransition無効化を確定させる
+      track.style.transition = '';
     }
   }
+
+  track.addEventListener('transitionend', (e)=>{
+    if(e.propertyName === 'transform' && index === count){
+      goTo(0, false);
+    }
+  });
+
+  function next(){ goTo(index + 1); }
+
+  let timer = setInterval(next, intervalMs);
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(next, intervalMs);
+  }
+
   if(dotsWrap){
     dotsWrap.querySelectorAll('button').forEach(btn=>{
       btn.addEventListener('click', ()=>{
@@ -146,11 +176,14 @@ function startMarketCarousel(trackId, dotsId, intervalMs){
       });
     });
   }
-  let timer = setInterval(()=> goTo(index+1), intervalMs);
-  function resetTimer(){
-    clearInterval(timer);
-    timer = setInterval(()=> goTo(index+1), intervalMs);
-  }
+
+  // カード自体をクリック(タップ)しても次のスライドへ進められるようにする(出典リンクのクリックは除く)
+  track.style.cursor = 'pointer';
+  track.addEventListener('click', (e)=>{
+    if(e.target.closest('a')) return;
+    next();
+    resetTimer();
+  });
 }
 
 async function renderMarketIndices(trackId, dotsId, jsonPath){
