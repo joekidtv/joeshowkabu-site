@@ -154,13 +154,16 @@ function startMarketCarousel(trackId, dotsId, intervalMs){
     }
   }
 
-  track.addEventListener('transitionend', (e)=>{
-    if(e.propertyName === 'transform' && index === count){
-      goTo(0, false);
+  // transitionend はブラウザ・端末によって発火しないことがあるため、
+  // CSSのトランジション時間(.5s)に合わせた setTimeout で確実に snap-back させる。
+  function next(){
+    goTo(index + 1);
+    if(index === count){
+      setTimeout(()=>{
+        if(index === count){ goTo(0, false); }
+      }, 520);
     }
-  });
-
-  function next(){ goTo(index + 1); }
+  }
 
   let timer = setInterval(next, intervalMs);
   function resetTimer(){
