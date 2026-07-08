@@ -67,8 +67,7 @@ nav ul a.active{color:var(--red);}
 .menu-drawer nav ul{list-style:none;display:flex;flex-direction:column;gap:20px;margin:0;padding:0;font-weight:900;font-size:18px;}
 .menu-drawer nav ul a:hover{color:var(--red);}
 .menu-drawer nav ul a.active{color:var(--red);}
-.menu-drawer .lang-toggle{align-self:flex-start;}
-.menu-drawer .btn-insta{align-self:flex-start;}
+.menu-drawer .header-actions{flex-direction:row;flex-wrap:wrap;align-self:flex-start;}
 .menu-drawer .drawer-logo{display:inline-flex;align-self:flex-start;}
 .menu-drawer .drawer-logo img{height:48px;width:auto;display:block;}
 
