@@ -80,7 +80,9 @@ Joe Show Kabuは**中高生向け**の株式・金融教育Instagramアカウン
 4. **JSON更新**: レクチャーなら `lectures.json` の**末尾**に1件追記(サムネイルは
    `assets/lectures/episode-N/slide-01.png` を指定可)。NEWSなら `news.json` の**先頭**に追記。
    形式はREADME.mdの記載に厳密に従う。既存エントリは変更しない
-5. **コミット & push**: `git add` → `git commit` → `git push origin main`。pushでサイトに自動反映
+5. **コミット**: `git add` → `git commit` まで実行する。
+   **`git push` は実行しない**(このMacにはpush用の認証情報が無いため)。
+   commitが終わったら「GitHub Desktopでpushをお願いします」とユーザーに伝えて作業を終える
 6. Instagramへの投稿は**手動運用**(ユーザーがPNGを使って投稿する)。自動投稿API連携はしない
 
 ### 書き出し環境メモ
