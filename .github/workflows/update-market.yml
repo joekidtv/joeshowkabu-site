@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main   # Re-run時も古いコミットに固定されず、常に最新のmainを使う
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,7 +37,9 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add market.json
             git commit -m "chore: auto-update JP market data [skip ci]"
-            git push
+            # 実行中に他のpushが入っていても失敗しないよう、rebaseしてからpushする
+            git pull --rebase origin main
+            git push origin HEAD:main
           else
             echo "No changes to commit."
           fi
