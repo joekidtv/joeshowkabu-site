@@ -9,7 +9,18 @@
     { "label": "日本銀行「2026年の金融政策決定会合等の日程」", "url": "https://www.boj.or.jp/mopo/mpmsche_minu/m_ref/mref250731a.pdf" },
     { "label": "FRB - FOMC Meeting calendars", "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" },
     { "label": "米労働統計局(BLS) - CPI発表スケジュール", "url": "https://www.bls.gov/schedule/news_release/cpi.htm" },
-    { "label": "米労働統計局(BLS) - 雇用統計発表スケジュール", "url": "https://www.bls.gov/schedule/news_release/empsit.htm" }
+    { "label": "米労働統計局(BLS) - 雇用統計発表スケジュール", "url": "https://www.bls.gov/schedule/news_release/empsit.htm" },
+    { "label": "Apple Investor Relations", "url": "https://investor.apple.com/investor-relations/default.aspx" },
+    { "label": "Amazon Investor Relations", "url": "https://ir.aboutamazon.com/" },
+    { "label": "Alphabet Investor Relations", "url": "https://abc.xyz/investor/" },
+    { "label": "Meta Investor Relations", "url": "https://investor.atmeta.com/" },
+    { "label": "Tesla Investor Relations", "url": "https://ir.tesla.com/press" },
+    { "label": "NVIDIA Investor Relations", "url": "https://investor.nvidia.com/" },
+    { "label": "TSMC Investor Relations", "url": "https://investor.tsmc.com/english/quarterly-results/2026/q2" },
+    { "label": "Samsung Electronics Newsroom", "url": "https://news.samsung.com/global/samsung-electronics-announces-earnings-guidance-for-second-quarter-2026" },
+    { "label": "SK hynix Investor Relations", "url": "https://www.skhynix.com/ir/" },
+    { "label": "任天堂 株主・投資家向け情報 IRカレンダー", "url": "https://www.nintendo.co.jp/ir/schedule/index.html" },
+    { "label": "ソフトバンク IRカレンダー", "url": "https://www.softbank.jp/corp/ir/news/calendar/" }
   ],
   "events": [
     { "date": "2026-01-09", "category": "us", "title": "米雇用統計(2025年12月分)", "desc": "米労働統計局(BLS)発表。非農業部門雇用者数・失業率など。日本時間22:30(冬時間)。" },
@@ -78,6 +89,18 @@
     { "date": "2026-12-09", "category": "us", "title": "FOMC(結果発表)・経済見通し(SEP)", "desc": "会合2日目。結果と四半期経済見通し(ドットチャート)を公表する注目回。" },
     { "date": "2026-12-10", "category": "us", "title": "米消費者物価指数(CPI・11月分)", "desc": "米労働統計局(BLS)発表。" },
     { "date": "2026-12-17", "category": "jp", "title": "日銀金融政策決定会合(1日目)", "desc": "日本銀行の金融政策を決める会合の1日目。年内最後の会合。" },
-    { "date": "2026-12-18", "category": "jp", "title": "日銀金融政策決定会合(結果発表)", "desc": "会合2日目。結果発表と総裁会見。" }
+    { "date": "2026-12-18", "category": "jp", "title": "日銀金融政策決定会合(結果発表)", "desc": "会合2日目。結果発表と総裁会見。" },
+
+    { "date": "2026-07-16", "category": "other", "title": "TSMC 決算発表(2026年Q2)", "desc": "世界最大の半導体受託製造(ファウンドリ)企業。半導体・AI関連株のセンチメントに影響。出典: TSMC Investor Relations。" },
+    { "date": "2026-07-22", "category": "us", "title": "テスラ(TSLA) 決算発表(2026年Q2)", "desc": "電気自動車大手。引け後(米東部時間)に発表。出典: Tesla Investor Relations。" },
+    { "date": "2026-07-28", "category": "us", "title": "アルファベット(GOOGL) 決算発表(2026年Q2)", "desc": "Google親会社。引け後に発表。出典: Alphabet Investor Relations。" },
+    { "date": "2026-07-29", "category": "us", "title": "メタ・プラットフォームズ(META) 決算発表(2026年Q2)", "desc": "Facebook/Instagram運営。引け後に発表。出典: Meta Investor Relations。" },
+    { "date": "2026-07-29", "category": "other", "title": "SKハイニックス 決算発表(2026年Q2)", "desc": "韓国の半導体大手。DRAM・HBM(AI向け高帯域メモリ)で世界的シェア。出典: SK hynix Investor Relations。" },
+    { "date": "2026-07-30", "category": "us", "title": "アップル(AAPL) 決算発表(2026年度Q3)", "desc": "米東部時間引け後に発表。iPhone販売動向などが焦点。出典: Apple Investor Relations。" },
+    { "date": "2026-07-30", "category": "us", "title": "アマゾン(AMZN) 決算発表(2026年Q2)", "desc": "引け後(米東部時間)に発表。出典: Amazon Investor Relations。" },
+    { "date": "2026-07-30", "category": "other", "title": "サムスン電子 決算発表(2026年Q2・本決算)", "desc": "半導体・スマートフォン世界大手。7/7発表の速報値に続く事業部門別の本決算。出典: Samsung Electronics Newsroom。" },
+    { "date": "2026-08-04", "category": "jp", "title": "ソフトバンクグループ 決算発表(2027年3月期 第1四半期)", "desc": "出典: ソフトバンク IRカレンダー。" },
+    { "date": "2026-08-06", "category": "jp", "title": "任天堂 決算発表(2027年3月期 第1四半期)", "desc": "出典: 任天堂 株主・投資家向け情報。" },
+    { "date": "2026-08-26", "category": "us", "title": "エヌビディア(NVDA) 決算発表(2027年度Q2)", "desc": "AI半導体大手。引け後(米東部時間)に発表。市場全体への影響が大きい注目決算。出典: NVIDIA Investor Relations。" }
   ]
 }
