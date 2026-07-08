@@ -25,6 +25,7 @@ header .container{display:flex;justify-content:space-between;align-items:center;
 nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;font-weight:700;font-size:15px;flex-wrap:wrap;}
 nav ul a:hover{color:var(--red);}
 nav ul a.active{color:var(--red);}
+.header-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
 .btn-insta{
   border:2px solid var(--black);background:var(--white);border-radius:999px;
   padding:10px 22px;font-weight:900;font-size:14px;
