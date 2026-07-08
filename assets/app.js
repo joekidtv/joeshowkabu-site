@@ -144,13 +144,25 @@ function startMarketCarousel(trackId, dotsId, intervalMs){
   }
 
   function goTo(i, animate){
-    if(animate === false){ track.style.transition = 'none'; }
-    index = i;
-    track.style.transform = `translateX(-${index * 100}%)`;
-    updateDots();
     if(animate === false){
-      void track.offsetHeight; // reflowを強制してtransition無効化を確定させる
-      track.style.transition = '';
+      // Chromeは transform がGPU合成されるため、offsetHeightの強制リフローだけでは
+      // 「トランジション無効化 → 瞬間移動 → トランジション再有効化」のタイミングが
+      // 実際の描画と同期しないことがある(Safariでは症状が出にくい)。
+      // 二重の requestAnimationFrame で、無効化した状態が実際に1フレーム描画されてから
+      // 再有効化することで、ブラウザに依存せず確実に瞬間移動させる。
+      track.style.transition = 'none';
+      index = i;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+          track.style.transition = '';
+        });
+      });
+    }else{
+      index = i;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
     }
   }
 
