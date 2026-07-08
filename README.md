@@ -157,6 +157,13 @@ Netlifyを使う場合は Site configuration → Build & deploy で「Stop build
 - 外部サイトの情報を使う場合は、`sources` 配列に出典(ラベルとURL)を必ず追加してください。ページ下部に自動で出典一覧として表示されます
 - 登録済みイベントの出典: [日本銀行(2026年会合日程PDF)](https://www.boj.or.jp/mopo/mpmsche_minu/m_ref/mref250731a.pdf) / [FRB(FOMCカレンダー)](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm) / [BLS(CPI)](https://www.bls.gov/schedule/news_release/cpi.htm) / [BLS(雇用統計)](https://www.bls.gov/schedule/news_release/empsit.htm)
 
+### 主要企業の決算発表(時価総額TOP20・日米)
+日米それぞれの時価総額TOP20企業(2026年7月時点、[日経の米国株ランキング](https://www.nikkei.com/marketdata/ranking-us/market-cap-high/) / [日本株ランキング](https://www.nikkei.com/marketdata/ranking-jp/market-cap-high/)を基準)のうち、各社の公式IRサイトで発表日が確定しているものだけを登録しています。加えて、台湾・韓国の主要半導体企業(TSMC・サムスン電子・SKハイニックス)も対象です。
+
+- **公式発表がまだ無い企業は掲載していません**(推定日は登録しない方針)。決算予定日は各社が数週間前にIRサイトで発表するため、その都度「◯◯の決算日を追加して」とお願いすれば追加します
+- **時価総額TOP20の入れ替えは四半期ごと(1月・4月・7月・10月を目安)に見直してください**。自動化はしていないため、「時価総額TOP20を最新に更新して」とお願いすると、最新ランキングを確認し、入れ替わった企業の決算日を調べて反映します
+- カテゴリは既存の3色ルールを流用しています: 米国企業→`us`(緑) / 日本企業→`jp`(赤) / 台湾・韓国など→`other`(黒)。新しい色は追加していません(デザインの4色ルールを維持するため)
+
 ## 現在の状態・差し替え推奨
 - 第1〜8回の `instagram_url` は実際の投稿URLを設定済み。第9回は近日公開のため空欄
 - 各レクチャーの `thumbnail` は空欄で、番号+タイトルのデザイン枠が自動生成されて表示されます。Instagram投稿1枚目の画像を `assets/thumbs/` に入れてパスを設定すれば、その画像に差し替わります
