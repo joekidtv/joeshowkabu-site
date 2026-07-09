@@ -2,7 +2,9 @@ name: Update market data (JP)
 
 # 日経平均株価・米ドル/円を毎日自動取得し、market.json を更新します。
 # TOPIX・日本10年国債金利はこのワークフローの対象外(東証公式ページ等からの手動更新を維持)。
-# コミットが入るとNetlifyが自動で再デプロイします。
+# あわせて、更新後のmarket.json/market_us.jsonの数値からNEWS見出しを自動生成し、
+# news.json の先頭に追加します(scripts/update_news.py)。
+# コミットが入るとGitHub Pagesが自動で再デプロイします。
 
 on:
   schedule:
@@ -30,13 +32,16 @@ jobs:
       - name: Update market.json
         run: python3 scripts/update_market.py
 
+      - name: Update news.json headlines
+        run: python3 scripts/update_news.py
+
       - name: Commit if changed
         run: |
-          if [[ -n "$(git status --porcelain market.json)" ]]; then
+          if [[ -n "$(git status --porcelain market.json news.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add market.json
-            git commit -m "chore: auto-update JP market data [skip ci]"
+            git add market.json news.json
+            git commit -m "chore: auto-update JP market data and news headlines [skip ci]"
             # 実行中に他のpushが入っていても失敗しないよう、rebaseしてからpushする
             git pull --rebase origin main
             git push origin HEAD:main

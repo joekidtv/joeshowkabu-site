@@ -8,7 +8,7 @@ calendar.html      経済カレンダーページ
 about.html         Aboutページ
 disclaimer.html    免責事項ページ
 lectures.json      ← レクチャーのデータ(ここを編集)
-news.json          ← NEWSのデータ(ここを編集)
+news.json          ← NEWSのデータ(市場データから自動生成される。手動追記も可)
 market.json        ← 本日の主要指数のデータ(日経平均・ドル円は自動更新、TOPIX・国債金利は手動)
 market_us.json     ← 本日の米国市場のデータ(NYダウ・S&P500・NASDAQ・米10年金利。自動更新)
 calendar.json      ← 経済カレンダーのイベントデータ(ここを編集)
@@ -22,6 +22,7 @@ assets/
 scripts/
   update_market.py    日本の市場データ(日経平均・ドル円)の自動更新スクリプト
   update_market_us.py 米国市場データの自動更新スクリプト
+  update_news.py      市場データからNEWS見出しを自動生成するスクリプト
 .github/workflows/
   update-market.yml    日本の市場データを毎日自動更新するワークフロー
   update-market-us.yml 米国市場データを毎日自動更新するワークフロー
@@ -65,8 +66,15 @@ Netlifyを使う場合は Site configuration → Build & deploy で「Stop build
 - `instagram_url`: その回の投稿URL。まだ無ければプロフィールURLでも可
 - `status`: `"published"`(公開) か `"upcoming"`(近日公開・半透明表示)
 
-## 新しいNEWSを追加するには
-`news.json` の配列の**先頭**に1件追記(新しいものが左に来ます)。
+## NEWSは自動更新されます(日本株・米国株・為替・指標の4本)
+`.github/workflows/update-market.yml`(JP側の市場データ更新ワークフロー、平日16:00 JST実行)が、
+`market.json`/`market_us.json` を更新した直後に `scripts/update_news.py` を実行し、
+その日の日経平均・NYダウ・NASDAQ・ドル円・日米10年金利の数値を埋め込んだ見出しを4本作って
+`news.json` の先頭に自動追加します。同じ日付・タグのカードが既にあれば、重複させず置き換えます。
+手動で何かする必要はありません。
+
+**手動でNEWSを追加/上書きしたい場合**(例: 特別なイベントの見出しを差し込みたい)は、
+`news.json` の配列の**先頭**に1件追記してください(新しいものが左に来ます)。
 
 ```json
 {
@@ -167,7 +175,7 @@ Netlifyを使う場合は Site configuration → Build & deploy で「Stop build
 ## 現在の状態・差し替え推奨
 - 第1〜8回の `instagram_url` は実際の投稿URLを設定済み。第9回は近日公開のため空欄
 - 各レクチャーの `thumbnail` は空欄で、番号+タイトルのデザイン枠が自動生成されて表示されます。Instagram投稿1枚目の画像を `assets/thumbs/` に入れてパスを設定すれば、その画像に差し替わります
-- `news.json` は現在サンプル内容。実運用時に日々のNEWS見出しへ差し替えてください
+- `news.json` は市場データから毎日自動生成されます(前述)。過去に手入力したサンプルの古いカードは、日付が「今日」にならないため自動では消えません。不要になったら手で削除してください
 
 ## 将来の拡張(未実装)
 `assets/app.js` の `fetchJSON` 関数が全データ取得の入り口です。将来Instagram Graph APIで
