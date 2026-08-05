@@ -1,37 +1,37 @@
 [
   {
     "name": "NYダウ(NY Dow Jones)",
-    "value": "53,178.41",
-    "change": "+693.38",
-    "changePercent": "+1.32%",
-    "updated": "2026-08-04 (自動取得)",
+    "value": "54,085.88",
+    "change": "+907.47",
+    "changePercent": "+1.71%",
+    "updated": "2026-08-05 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EDJI/"
   },
   {
     "name": "S&P500",
-    "value": "7,600.50",
-    "change": "+110.78",
-    "changePercent": "+1.48%",
-    "updated": "2026-08-04 (自動取得)",
+    "value": "7,736.52",
+    "change": "+136.02",
+    "changePercent": "+1.79%",
+    "updated": "2026-08-05 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EGSPC/"
   },
   {
     "name": "NASDAQ",
-    "value": "25,913.90",
-    "change": "+540.04",
-    "changePercent": "+2.13%",
-    "updated": "2026-08-04 (自動取得)",
+    "value": "26,584.99",
+    "change": "+671.10",
+    "changePercent": "+2.59%",
+    "updated": "2026-08-05 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EIXIC/"
   },
   {
     "name": "米国10年債券利回り",
-    "value": "4.686%",
+    "value": "4.627%",
     "change": "-0.059",
     "changePercent": "",
-    "updated": "2026-08-04 (自動取得)",
+    "updated": "2026-08-05 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5ETNX/"
   }
