@@ -1,28 +1,28 @@
 [
   {
     "name": "NYダウ(NY Dow Jones)",
-    "value": "52,380.66",
-    "change": "-405.41",
-    "changePercent": "-0.77%",
-    "updated": "2026-09-10 (自動取得)",
+    "value": "52,064.10",
+    "change": "-316.56",
+    "changePercent": "-0.60%",
+    "updated": "2026-09-11 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EDJI/"
   },
   {
     "name": "S&P500",
-    "value": "7,636.36",
-    "change": "-37.16",
-    "changePercent": "-0.48%",
-    "updated": "2026-09-10 (自動取得)",
+    "value": "7,591.70",
+    "change": "-44.66",
+    "changePercent": "-0.58%",
+    "updated": "2026-09-11 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EGSPC/"
   },
   {
     "name": "NASDAQ",
-    "value": "26,253.34",
-    "change": "-168.07",
-    "changePercent": "-0.64%",
-    "updated": "2026-09-10 (自動取得)",
+    "value": "26,081.72",
+    "change": "-171.62",
+    "changePercent": "-0.65%",
+    "updated": "2026-09-11 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EIXIC/"
   },
