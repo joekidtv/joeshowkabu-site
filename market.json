@@ -4,7 +4,7 @@
     "value": "65,018.95",
     "change": "+882.75",
     "changePercent": "+1.38%",
-    "updated": "2026-09-21 15:30 (自動取得)",
+    "updated": "2026-09-22 15:30 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EN225/"
   },
@@ -19,10 +19,10 @@
   },
   {
     "name": "米ドル/円",
-    "value": "157.38",
-    "change": "+0.53",
-    "changePercent": "+0.33%",
-    "updated": "2026-09-21 15:30 (自動取得)",
+    "value": "157.17",
+    "change": "-0.14",
+    "changePercent": "-0.09%",
+    "updated": "2026-09-22 15:30 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/USDJPY=X/"
   },
