@@ -1,10 +1,10 @@
 [
   {
     "name": "日経平均株価",
-    "value": "66,364.20",
-    "change": "+850.21",
-    "changePercent": "+1.30%",
-    "updated": "2026-09-25 15:30 (自動取得)",
+    "value": "65,481.27",
+    "change": "-396.35",
+    "changePercent": "-0.60%",
+    "updated": "2026-09-29 15:30 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5EN225/"
   },
@@ -19,9 +19,9 @@
   },
   {
     "name": "米ドル/円",
-    "value": "157.50",
-    "change": "+0.32",
-    "changePercent": "+0.20%",
+    "value": "157.38",
+    "change": "+0.01",
+    "changePercent": "+0.01%",
     "updated": "2026-09-29 15:30 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/USDJPY=X/"
