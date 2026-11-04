@@ -19,10 +19,10 @@
   },
   {
     "name": "米ドル/円",
-    "value": "158.26",
-    "change": "+0.41",
-    "changePercent": "+0.26%",
-    "updated": "2026-11-03 15:30 (自動取得)",
+    "value": "158.58",
+    "change": "-0.04",
+    "changePercent": "-0.03%",
+    "updated": "2026-11-05 15:30 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/USDJPY=X/"
   },
