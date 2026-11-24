@@ -1,6 +1,30 @@
 [
   {
     "tag": "日本株",
+    "date": "2026-11-25",
+    "summary": "日経平均株価 56,436.65円(-3,007.56 / -5.06%)",
+    "instagram_url": "https://www.instagram.com/joeshowkabu/"
+  },
+  {
+    "tag": "米国株",
+    "date": "2026-11-25",
+    "summary": "NYダウ 49,595.31ドル(+1,448.01)、NASDAQ 24,089.56(+1,471.83)",
+    "instagram_url": "https://www.instagram.com/joeshowkabu/"
+  },
+  {
+    "tag": "為替",
+    "date": "2026-11-25",
+    "summary": "ドル円 159.29円(+0.31)",
+    "instagram_url": "https://www.instagram.com/joeshowkabu/"
+  },
+  {
+    "tag": "指標",
+    "date": "2026-11-25",
+    "summary": "日本10年金利 2.875% / 米10年金利 4.784%",
+    "instagram_url": "https://www.instagram.com/joeshowkabu/"
+  },
+  {
+    "tag": "日本株",
     "date": "2026-11-24",
     "summary": "日経平均株価 56,436.65円(-3,007.56 / -5.06%)",
     "instagram_url": "https://www.instagram.com/joeshowkabu/"
