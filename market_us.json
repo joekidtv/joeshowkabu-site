@@ -28,10 +28,10 @@
   },
   {
     "name": "米国10年債券利回り",
-    "value": "4.784%",
-    "change": "+0.000",
+    "value": "4.848%",
+    "change": "-0.056",
     "changePercent": "",
-    "updated": "2026-09-05 (自動取得)",
+    "updated": "2026-11-26 (自動取得)",
     "sourceLabel": "Yahoo Finance",
     "sourceUrl": "https://finance.yahoo.com/quote/%5ETNX/"
   }
